@@ -31,31 +31,31 @@ export const AnimatedIndividualCard = ({
   const colorVariants = {
     purple: {
       gradient: 'from-purple-500 to-purple-800 dark:from-purple-500 dark:to-purple-900',
-      default: 'bg-white dark:bg-gray-800',
+      default: 'bg-white dark:bg-gray-700',
     },
     blue: {
       gradient: 'from-blue-500 to-blue-800 dark:from-blue-500 dark:to-blue-900',
-      default: 'bg-white dark:bg-gray-800',
+      default: 'bg-white dark:bg-gray-700',
     },
     green: {
       gradient: 'from-green-500 to-green-800 dark:from-green-500 dark:to-green-900',
-      default: 'bg-white dark:bg-gray-800',
+      default: 'bg-white dark:bg-gray-700',
     },
     red: {
       gradient: 'from-red-500 to-red-800 dark:from-red-500 dark:to-red-900',
-      default: 'bg-white dark:bg-gray-800',
+      default: 'bg-white dark:bg-gray-700',
     },
     orange: {
       gradient: 'from-orange-500 to-orange-800 dark:from-orange-500 dark:to-orange-900',
-      default: 'bg-white dark:bg-gray-800',
+      default: 'bg-white dark:bg-gray-700',
     },
     yellow: {
       gradient: 'from-yellow-500 to-yellow-800 dark:from-yellow-500 dark:to-yellow-900',
-      default: 'bg-white dark:bg-gray-800',
+      default: 'bg-white dark:bg-gray-700',
     },
     pink: {
       gradient: 'from-pink-500 to-pink-800 dark:from-pink-500 dark:to-pink-900',
-      default: 'bg-white dark:bg-gray-800',
+      default: 'bg-white dark:bg-gray-700',
     },
     cyan: {
       gradient: 'from-cyan-500 to-cyan-800 dark:from-cyan-500 dark:to-cyan-900',
@@ -94,7 +94,7 @@ export const AnimatedIndividualCard = ({
         />
       ) : (
         <div className={`w-16 h-16 rounded-full ${
-          isHovered ? 'bg-white/20' : 'bg-gray-200 dark:bg-gray-700'
+          isHovered ? 'bg-white/20' : 'bg-gray-200 dark:bg-gray-800'
         } flex items-center justify-center mb-4 transition-all duration-300 ${
           isHovered ? 'animate-bounce' : ''
         }`}>

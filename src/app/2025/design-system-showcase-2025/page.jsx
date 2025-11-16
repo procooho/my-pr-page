@@ -611,7 +611,7 @@ const items = [
                     tabs={exampleTabs}
                     colorVariant="blue"
                     borderColor="blue"
-                    minContentHeight="500px"
+                    minContentHeight="100px"
                   />
                 </div>
               </div>

@@ -58,7 +58,7 @@ const TabCard = ({ title, icon: Icon, isActive, onHover, colorVariant = 'blue' }
       onClick={onHover}
       className={`flex flex-col items-center justify-center p-2 sm:p-4 md:p-6 rounded-xl transition-all duration-500 ease-out cursor-pointer touch-auto ${isActive
         ? `bg-gradient-to-br ${colors.active} text-white transform scale-105 shadow-2xl`
-        : `bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 shadow-lg ${colors.hover}`
+        : `bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 shadow-lg ${colors.hover}`
         }`}
       style={{ minHeight: '100px' }}
     >
@@ -152,7 +152,7 @@ export const InteractiveTabs = ({
 
       <div className="w-full">
         {/* Tab Cards Grid */}
-         <div className={`grid ${getGridCols()} gap-2 sm:gap-4 mb-8`}>
+         <div className={`grid ${getGridCols()} gap-2 sm:gap-8 mb-8`}>
           {tabs.map((tab, index) => (
             <TabCard
               key={index}
