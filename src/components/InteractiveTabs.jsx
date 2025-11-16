@@ -57,8 +57,8 @@ const TabCard = ({ title, icon: Icon, isActive, onHover, colorVariant = 'blue' }
       onMouseEnter={onHover}
       onClick={onHover}
       className={`flex flex-col items-center justify-center p-2 sm:p-4 md:p-6 rounded-xl transition-all duration-500 ease-out cursor-pointer touch-auto ${isActive
-          ? `bg-gradient-to-br ${colors.active} text-white transform scale-105 shadow-2xl`
-          : `bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 shadow-lg ${colors.hover}`
+        ? `bg-gradient-to-br ${colors.active} text-white transform scale-105 shadow-2xl`
+        : `bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 shadow-lg ${colors.hover}`
         }`}
       style={{ minHeight: '100px' }}
     >
@@ -111,8 +111,20 @@ export const InteractiveTabs = ({
   };
 
   // Dynamic grid columns based on number of tabs
-  const mobileCols = Math.min(tabs.length, 2);
-  const desktopCols = Math.min(tabs.length, 4);
+  const getGridCols = () => {
+    const tabCount = tabs.length;
+
+    // Mobile grid classes
+    const mobileClass = tabCount === 1 ? 'grid-cols-1' : 'grid-cols-2';
+
+    // Desktop grid classes
+    let desktopClass = 'sm:grid-cols-4';
+    if (tabCount === 1) desktopClass = 'sm:grid-cols-1';
+    else if (tabCount === 2) desktopClass = 'sm:grid-cols-2';
+    else if (tabCount === 3) desktopClass = 'sm:grid-cols-3';
+
+    return `${mobileClass} ${desktopClass}`;
+  };
 
 
   return (
@@ -140,7 +152,7 @@ export const InteractiveTabs = ({
 
       <div className="w-full">
         {/* Tab Cards Grid */}
-        <div className={`grid grid-cols-${mobileCols} sm:grid-cols-${desktopCols} gap-2 sm:gap-4 mb-8`}>
+         <div className={`grid ${getGridCols()} gap-2 sm:gap-4 mb-8`}>
           {tabs.map((tab, index) => (
             <TabCard
               key={index}
@@ -217,19 +229,19 @@ export const createScheduleTab = (businessHours = [], note = '') => ({
           <div
             key={index}
             className={`flex justify-between items-center p-4 rounded-xl transition-all duration-300 ${item.isOpen
-                ? 'bg-gradient-to-r from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 border border-green-200 dark:border-green-700'
-                : 'bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 border border-gray-200 dark:border-gray-700'
+              ? 'bg-gradient-to-r from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 border border-green-200 dark:border-green-700'
+              : 'bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 border border-gray-200 dark:border-gray-700'
               }`}
           >
             <span className={`font-semibold ${item.isOpen
-                ? 'text-green-700 dark:text-green-300'
-                : 'text-gray-600 dark:text-gray-400'
+              ? 'text-green-700 dark:text-green-300'
+              : 'text-gray-600 dark:text-gray-400'
               }`}>
               {item.day}
             </span>
             <span className={`${item.isOpen
-                ? 'text-green-600 dark:text-green-400'
-                : 'text-gray-500 dark:text-gray-500'
+              ? 'text-green-600 dark:text-green-400'
+              : 'text-gray-500 dark:text-gray-500'
               }`}>
               {item.hours}
             </span>
