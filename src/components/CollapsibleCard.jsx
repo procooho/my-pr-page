@@ -16,10 +16,13 @@ export const CollapsibleCard = ({
     defaultCollapsed = false,
     collapsed,
     onCollapseChange,
+    hoverable = true,
+    scaleOnHover = true,
     children,
 }) => {
     const isControlled = collapsed !== undefined;
     const [internalCollapsed, setInternalCollapsed] = useState(defaultCollapsed);
+    const [isHovered, setIsHovered] = useState(false);
     const isCollapsed = isControlled ? collapsed : internalCollapsed;
 
     const contentWrapperRef = useRef(null);
@@ -27,16 +30,70 @@ export const CollapsibleCard = ({
 
     const colorThemes = {
         blue: {
-            icon: 'text-gray-700 dark:text-gray-200',
-            iconBg: 'bg-gray-100 dark:bg-gray-700',
+            icon: 'text-blue-700 dark:text-blue-200',
+            iconBg: 'bg-blue-100 dark:bg-blue-700',
+            accent: 'bg-gradient-to-b from-blue-500 to-blue-600',
+            title: 'text-gray-900 dark:text-gray-100',
+            subtitle: 'text-gray-500 dark:text-gray-400',
+            border: 'border-gray-300 dark:border-gray-600',
+            hoverBorder: 'border-blue-300 dark:border-blue-600',
+            chevron: 'text-gray-600 dark:text-white',
+            dot: 'bg-blue-500',
         },
         cyan: {
             icon: 'text-cyan-700 dark:text-cyan-200',
             iconBg: 'bg-cyan-100 dark:bg-cyan-700',
+            accent: 'bg-gradient-to-b from-cyan-500 to-cyan-600',
+            title: 'text-gray-900 dark:text-gray-100',
+            subtitle: 'text-gray-500 dark:text-gray-400',
+            border: 'border-gray-300 dark:border-gray-600',
+            hoverBorder: 'border-cyan-300 dark:border-cyan-600',
+            chevron: 'text-gray-600 dark:text-white',
+            dot: 'bg-cyan-500',
         },
         purple: {
             icon: 'text-purple-700 dark:text-purple-200',
             iconBg: 'bg-purple-100 dark:bg-purple-700',
+            accent: 'bg-gradient-to-b from-purple-500 to-purple-600',
+            title: 'text-gray-900 dark:text-gray-100',
+            subtitle: 'text-gray-500 dark:text-gray-400',
+            border: 'border-gray-300 dark:border-gray-600',
+            hoverBorder: 'border-purple-300 dark:border-purple-600',
+            chevron: 'text-gray-600 dark:text-white',
+            dot: 'bg-purple-500',
+        },
+        green: {
+            icon: 'text-green-700 dark:text-green-200',
+            iconBg: 'bg-green-100 dark:bg-green-700',
+            accent: 'bg-gradient-to-b from-green-500 to-green-600',
+            title: 'text-gray-900 dark:text-gray-100',
+            subtitle: 'text-gray-500 dark:text-gray-400',
+            border: 'border-gray-300 dark:border-gray-600',
+            hoverBorder: 'border-green-300 dark:border-green-600',
+            chevron: 'text-gray-600 dark:text-white',
+            dot: 'bg-green-500',
+        },
+        red: {
+            icon: 'text-red-700 dark:text-red-200',
+            iconBg: 'bg-red-100 dark:bg-red-700',
+            accent: 'bg-gradient-to-b from-red-500 to-red-600',
+            title: 'text-gray-900 dark:text-gray-100',
+            subtitle: 'text-gray-500 dark:text-gray-400',
+            border: 'border-gray-300 dark:border-gray-600',
+            hoverBorder: 'border-red-300 dark:border-red-600',
+            chevron: 'text-gray-600 dark:text-white',
+            dot: 'bg-red-500',
+        },
+        orange: {
+            icon: 'text-orange-700 dark:text-orange-200',
+            iconBg: 'bg-orange-100 dark:bg-orange-700',
+            accent: 'bg-gradient-to-b from-orange-500 to-orange-600',
+            title: 'text-gray-900 dark:text-gray-100',
+            subtitle: 'text-gray-500 dark:text-gray-400',
+            border: 'border-gray-300 dark:border-gray-600',
+            hoverBorder: 'border-orange-300 dark:border-orange-600',
+            chevron: 'text-gray-600 dark:text-white',
+            dot: 'bg-orange-500',
         },
     };
 
@@ -48,6 +105,43 @@ export const CollapsibleCard = ({
         black: "bg-black shadow-2xl border-2 border-cyan-500/50",
         glass: "bg-white/10 dark:bg-white/5 backdrop-blur-md shadow-xl border border-white/20",
     };
+
+    // Override theme colors for black and gradient variants
+    const accentColor = variant === 'black'
+        ? 'bg-gradient-to-b from-cyan-400 to-cyan-500'
+        : variant === 'gradient'
+            ? theme.accent
+            : theme.accent;
+
+    const titleColor = variant === 'black'
+        ? 'text-cyan-300'
+        : variant === 'gradient'
+            ? 'text-gray-900 dark:text-white'
+            : theme.title;
+
+    const subtitleColor = variant === 'black'
+        ? 'text-cyan-100'
+        : variant === 'gradient'
+            ? 'text-gray-700 dark:text-gray-300'
+            : theme.subtitle;
+
+    const borderColor = variant === 'black'
+        ? 'border-cyan-500/50'
+        : theme.border;
+
+    const chevronColor = variant === 'black'
+        ? 'text-cyan-400'
+        : variant === 'gradient'
+            ? 'text-gray-900 dark:text-white'
+            : theme.chevron;
+
+    const hoverBorderColor = variant === 'black'
+        ? 'border-cyan-400 dark:border-cyan-300'
+        : theme.hoverBorder;
+
+    const dotColor = variant === 'black'
+        ? 'bg-cyan-400'
+        : theme.dot;
 
     const updateHeight = () => {
         if (contentWrapperRef.current) {
@@ -75,29 +169,29 @@ export const CollapsibleCard = ({
         if (onCollapseChange) onCollapseChange(newValue);
     };
 
-    const accentColor = variant === 'black' ? 'bg-gradient-to-b from-cyan-400 to-cyan-500' : 'bg-gradient-to-b from-blue-500 to-blue-600';
-    const titleColor = variant === 'black' ? 'text-cyan-300' : 'text-gray-900 dark:text-gray-100';
-    const subtitleColor = variant === 'black' ? 'text-cyan-100' : 'text-gray-500 dark:text-gray-400';
-    const borderColor = variant === 'black' ? 'border-cyan-500/50' : 'border-gray-300 dark:border-gray-600';
-    const chevronColor = variant === 'black' ? 'text-cyan-400' : variant === 'gradient' ? 'text-gray-900 dark:text-white' : 'text-gray-600 dark:text-white';
-
     return (
         <div
-            className={`group relative rounded-xl transition-all duration-200 ${variantClasses[variant]} hover:shadow-md`}
+            className={`relative rounded-xl transition-all duration-200 my-5 ${variantClasses[variant]} ${scaleOnHover ? 'hover:scale-[103%]' : ''} ${hoverable && isHovered ? 'shadow-md' : ''}`}
             style={{
                 width: "100%",
                 display: "flex",
                 flexDirection: "column",
                 alignSelf: "flex-start",
             }}
+            onMouseEnter={() => hoverable && setIsHovered(true)}
+            onMouseLeave={() => hoverable && setIsHovered(false)}
         >
             {/* Animated border overlay */}
-            <div className="absolute inset-[-2px] rounded-xl border-2 border-blue-300 dark:border-blue-600 opacity-0 group-hover:opacity-100 group-hover:animate-pulse pointer-events-none z-10" />
+            {hoverable && (
+                <div className={`absolute inset-[-2px] rounded-xl border-2 ${hoverBorderColor} transition-opacity pointer-events-none z-10 ${isHovered ? 'opacity-100 animate-pulse' : 'opacity-0'}`} />
+            )}
 
             {/* Hover effect indicator */}
-            <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                <div className="w-1.5 h-1.5 bg-blue-500 rounded-full" />
-            </div>
+            {hoverable && (
+                <div className={`absolute top-2 right-2 transition-opacity ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
+                    <div className={`w-1.5 h-1.5 ${dotColor} rounded-full`} />
+                </div>
+            )}
 
             {/* Header */}
             <div

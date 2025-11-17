@@ -41,11 +41,46 @@ export default function ShowcasePage() {
   const [currentStep, setCurrentStep] = useState(1);
   const [isCollapsed, setIsCollapsed] = useState(false);
 
+  // Section collapse states
+  const [cardSectionCollapsed, setCardSectionCollapsed] = useState(true);
+  const [collapsibleSectionCollapsed, setCollapsibleSectionCollapsed] = useState(true);
+  const [buttonSectionCollapsed, setButtonSectionCollapsed] = useState(true);
+  const [inputSectionCollapsed, setInputSectionCollapsed] = useState(true);
+  const [textareaSectionCollapsed, setTextareaSectionCollapsed] = useState(true);
+  const [dropdownSectionCollapsed, setDropdownSectionCollapsed] = useState(true);
+  const [radioSectionCollapsed, setRadioSectionCollapsed] = useState(true);
+  const [infoButtonSectionCollapsed, setInfoButtonSectionCollapsed] = useState(true);
+  const [alertSectionCollapsed, setAlertSectionCollapsed] = useState(true);
+  const [statSectionCollapsed, setStatSectionCollapsed] = useState(true);
+  const [tableSectionCollapsed, setTableSectionCollapsed] = useState(true);
+  const [noDataSectionCollapsed, setNoDataSectionCollapsed] = useState(true);
+  const [stepperSectionCollapsed, setStepperSectionCollapsed] = useState(true);
+
   const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // Expand the section first
+    switch (id) {
+      case 'card-section': setCardSectionCollapsed(false); break;
+      case 'collapsible-section': setCollapsibleSectionCollapsed(false); break;
+      case 'button-section': setButtonSectionCollapsed(false); break;
+      case 'input-section': setInputSectionCollapsed(false); break;
+      case 'textarea-section': setTextareaSectionCollapsed(false); break;
+      case 'dropdown-section': setDropdownSectionCollapsed(false); break;
+      case 'radiobutton-section': setRadioSectionCollapsed(false); break;
+      case 'infobutton-section': setInfoButtonSectionCollapsed(false); break;
+      case 'alertcard-section': setAlertSectionCollapsed(false); break;
+      case 'statcard-section': setStatSectionCollapsed(false); break;
+      case 'table-section': setTableSectionCollapsed(false); break;
+      case 'nodata-section': setNoDataSectionCollapsed(false); break;
+      case 'stepper-section': setStepperSectionCollapsed(false); break;
     }
+
+    // Scroll after a brief delay to allow for expand animation
+    setTimeout(() => {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 100);
   };
 
   return (
@@ -57,6 +92,7 @@ export default function ShowcasePage() {
             subtitle="All interactive components with examples and code snippets"
             accentColor="blue"
           />
+
           {/* Overview Section */}
           <section>
             <PageContainer>
@@ -64,8 +100,8 @@ export default function ShowcasePage() {
                 title="Overview"
                 accentColor="blue"
               />
-              <Card variant="gradient">
-                <CardHeader title="About This Library" />
+              <Card variant="gradient" >
+                <CardHeader title="About This Library"/>
                 <CardContent>
                   <div className="space-y-3">
                     <p className="text-base text-gray-700 dark:text-gray-300">
@@ -80,6 +116,25 @@ export default function ShowcasePage() {
 
               {/* Component Categories */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
+                {/* Layout & Containers */}
+                <Card variant="gradient">
+                  <CardHeader title="Layout & Containers" />
+                  <CardContent>
+                    <div className="space-y-2.5">
+                      <ComponentLink
+                        name="Card.jsx"
+                        description="Universal container with 6 variants and 8 color themes"
+                        onClick={() => scrollToSection('card-section')}
+                      />
+                      <ComponentLink
+                        name="CollapsibleCard.jsx"
+                        description="Expandable card with smooth animations"
+                        onClick={() => scrollToSection('collapsible-section')}
+                      />
+                    </div>
+                  </CardContent>
+                </Card>
+
                 {/* Interactive Controls */}
                 <Card variant="gradient">
                   <CardHeader title="Interactive Controls" />
@@ -167,11 +222,6 @@ export default function ShowcasePage() {
                         description="Multi step progress indicator"
                         onClick={() => scrollToSection('stepper-section')}
                       />
-                      <ComponentLink
-                        name="CollapsibleCard.jsx"
-                        description="Expandable card with smooth animations"
-                        onClick={() => scrollToSection('collapsible-section')}
-                      />
                     </div>
                   </CardContent>
                 </Card>
@@ -188,21 +238,937 @@ export default function ShowcasePage() {
                     <Guideline text="Components are accessible with proper ARIA labels and keyboard navigation" />
                     <Guideline text="Icons from lucide react are fully supported" />
                     <Guideline text="All form components support controlled and uncontrolled modes" />
+                    <Guideline text="Card and CollapsibleCard support independent hover effect controls" />
                   </div>
                 </CardContent>
               </Card>
             </PageContainer>
           </section>
 
+          {/* Card Component */}
+          <CollapsibleCard
+            title="Card Component"
+            subtitle="Universal container with multiple variants and hover effects"
+            colorTheme="blue"
+            variant="default"
+            hoverable={false}
+            scaleOnHover={false}
+            collapsed={cardSectionCollapsed}
+            onCollapseChange={setCardSectionCollapsed}
+          >
+            <section id="card-section">
+              <Card variant="default" scaleOnHover={false}>
+                <CardHeader title="Features & Capabilities" />
+                <CardContent>
+                  <div className="space-y-2">
+                    <Feature text="6 variants: default, gradient, black, special, glass, neon" />
+                    <Feature text="8 color themes: blue, cyan, purple, green, red, orange, yellow, pink" />
+                    <Feature text="Independent hover controls (hoverable, scaleOnHover)" />
+                    <Feature text="Animated border overlay on hover" />
+                    <Feature text="Hover indicator dot with color matching" />
+                    <Feature text="Neon glow effects for special variants" />
+                    <Feature text="Click handler support" />
+                    <Feature text="Fully customizable with className prop" />
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Variant Examples */}
+              <Card variant="gradient" scaleOnHover={false}>
+                <CardHeader title="Card Variants" />
+                <CardContent>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">Default</p>
+                      <Card variant="default">
+                        <CardContent>
+                          <p className="text-sm text-gray-700 dark:text-gray-300">
+                            White background with standard border and shadow
+                          </p>
+                        </CardContent>
+                      </Card>
+                    </div>
+
+                    <div className="space-y-2">
+                      <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">Gradient</p>
+                      <Card variant="gradient">
+                        <CardContent>
+                          <p className="text-sm text-gray-700 dark:text-gray-300">
+                            Gradient background from gray-50 to gray-300
+                          </p>
+                        </CardContent>
+                      </Card>
+                    </div>
+
+                    <div className="space-y-2">
+                      <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">Black</p>
+                      <Card variant="black">
+                        <CardContent>
+                          <p className="text-sm text-cyan-100">
+                            Pure black background with cyan accents
+                          </p>
+                        </CardContent>
+                      </Card>
+                    </div>
+
+                    <div className="space-y-2">
+                      <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">Special</p>
+                      <Card variant="special">
+                        <CardContent>
+                          <p className="text-sm text-gray-700 dark:text-gray-300">
+                            Featured card with enhanced styling and ring
+                          </p>
+                        </CardContent>
+                      </Card>
+                    </div>
+
+                    <div className="space-y-2">
+                      <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">Glass</p>
+                      <Card variant="glass">
+                        <CardContent>
+                          <p className="text-sm text-gray-700 dark:text-gray-300">
+                            Glassmorphism with backdrop blur
+                          </p>
+                        </CardContent>
+                      </Card>
+                    </div>
+
+                    <div className="space-y-2">
+                      <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">Neon</p>
+                      <Card variant="neon">
+                        <CardContent>
+                          <p className="text-sm text-cyan-100">
+                            Dark background with neon glow effect
+                          </p>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Color Themes */}
+              <Card variant="gradient" scaleOnHover={false}>
+                <CardHeader title="Color Themes" />
+                <CardContent>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <Card variant="default" colorTheme="blue">
+                      <CardContent>
+                        <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 text-center">
+                          Blue
+                        </p>
+                      </CardContent>
+                    </Card>
+                    <Card variant="default" colorTheme="cyan">
+                      <CardContent>
+                        <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 text-center">
+                          Cyan
+                        </p>
+                      </CardContent>
+                    </Card>
+                    <Card variant="default" colorTheme="purple">
+                      <CardContent>
+                        <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 text-center">
+                          Purple
+                        </p>
+                      </CardContent>
+                    </Card>
+                    <Card variant="default" colorTheme="green">
+                      <CardContent>
+                        <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 text-center">
+                          Green
+                        </p>
+                      </CardContent>
+                    </Card>
+                    <Card variant="default" colorTheme="red">
+                      <CardContent>
+                        <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 text-center">
+                          Red
+                        </p>
+                      </CardContent>
+                    </Card>
+                    <Card variant="default" colorTheme="orange">
+                      <CardContent>
+                        <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 text-center">
+                          Orange
+                        </p>
+                      </CardContent>
+                    </Card>
+                    <Card variant="default" colorTheme="yellow">
+                      <CardContent>
+                        <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 text-center">
+                          Yellow
+                        </p>
+                      </CardContent>
+                    </Card>
+                    <Card variant="default" colorTheme="pink">
+                      <CardContent>
+                        <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 text-center">
+                          Pink
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Hover Controls */}
+              <Card variant="gradient" scaleOnHover={false}>
+                <CardHeader title="Hover Control Options" />
+                <CardContent>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                        Full Hover (default)
+                      </p>
+                      <Card variant="default" hoverable={true} scaleOnHover={true}>
+                        <CardContent>
+                          <p className="text-sm text-gray-600 dark:text-gray-400">
+                            hoverable=true, scaleOnHover=true<br />
+                            Border + Dot + Scale
+                          </p>
+                        </CardContent>
+                      </Card>
+                    </div>
+
+                    <div className="space-y-2">
+                      <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                        Border & Dot Only
+                      </p>
+                      <Card variant="default" hoverable={true} scaleOnHover={false}>
+                        <CardContent>
+                          <p className="text-sm text-gray-600 dark:text-gray-400">
+                            hoverable=true, scaleOnHover=false<br />
+                            Border + Dot (No Scale)
+                          </p>
+                        </CardContent>
+                      </Card>
+                    </div>
+
+                    <div className="space-y-2">
+                      <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                        Scale Only
+                      </p>
+                      <Card variant="default" hoverable={false} scaleOnHover={true}>
+                        <CardContent>
+                          <p className="text-sm text-gray-600 dark:text-gray-400">
+                            hoverable=false, scaleOnHover=true<br />
+                            Scale Only (No Border/Dot)
+                          </p>
+                        </CardContent>
+                      </Card>
+                    </div>
+
+                    <div className="space-y-2">
+                      <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                        No Hover Effects
+                      </p>
+                      <Card variant="default" hoverable={false} scaleOnHover={false}>
+                        <CardContent>
+                          <p className="text-sm text-gray-600 dark:text-gray-400">
+                            hoverable=false, scaleOnHover=false<br />
+                            Static (No Hover Effects)
+                          </p>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Advanced Usage */}
+              <Card variant="gradient" scaleOnHover={false}>
+                <CardHeader title="Advanced Usage Examples" />
+                <CardContent>
+                  <div className="space-y-6">
+                    <div>
+                      <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
+                        Clickable Card with onClick Handler
+                      </p>
+                      <Card
+                        variant="special"
+                        colorTheme="purple"
+                        onClick={() => alert('Card clicked!')}
+                      >
+                        <CardContent>
+                          <p className="text-sm text-gray-700 dark:text-gray-300">
+                            Click me to trigger an action! Notice the cursor changes to pointer.
+                          </p>
+                        </CardContent>
+                      </Card>
+                    </div>
+
+                    <div>
+                      <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
+                        Neon Variant with Custom Color
+                      </p>
+                      <Card variant="neon" colorTheme="purple">
+                        <CardContent>
+                          <p className="text-sm text-purple-100">
+                            Neon variant with purple color theme and glow effects
+                          </p>
+                        </CardContent>
+                      </Card>
+                    </div>
+
+                    <div>
+                      <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
+                        Special Variant with Enhanced Styling
+                      </p>
+                      <Card variant="special" colorTheme="cyan">
+                        <CardContent>
+                          <p className="text-sm text-gray-700 dark:text-gray-300">
+                            Special variant with ring effect, larger scale on hover (105%), and enhanced animations
+                          </p>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Code Examples */}
+              <Card variant="default" scaleOnHover={false}>
+                <CardHeader title="Code Examples" />
+                <CardContent>
+                  <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
+                    {`import { Card } from './Card';
+import { CardContent } from './CardContent';
+
+// Basic usage
+<Card variant="default">
+  <CardContent>
+    Your content here
+  </CardContent>
+</Card>
+
+// With color theme
+<Card variant="default" colorTheme="purple">
+  <CardContent>
+    Purple themed card
+  </CardContent>
+</Card>
+
+// Special variant for featured content
+<Card variant="special" colorTheme="cyan">
+  <CardContent>
+    Featured card with enhanced styling
+  </CardContent>
+</Card>
+
+// Glass effect
+<Card variant="glass">
+  <CardContent>
+    Glassmorphism effect
+  </CardContent>
+</Card>
+
+// Neon with custom color
+<Card variant="neon" colorTheme="purple">
+  <CardContent>
+    Neon glow effect
+  </CardContent>
+</Card>
+
+// Hover control options
+<Card 
+  variant="default" 
+  hoverable={true} 
+  scaleOnHover={false}
+>
+  <CardContent>
+    Border effects but no scale
+  </CardContent>
+</Card>
+
+// Clickable card
+<Card 
+  variant="default" 
+  onClick={() => handleClick()}
+>
+  <CardContent>
+    Clickable card
+  </CardContent>
+</Card>
+
+// Custom className
+<Card 
+  variant="default" 
+  className="shadow-2xl"
+>
+  <CardContent>
+    Card with custom styling
+  </CardContent>
+</Card>`}
+                  </pre>
+                </CardContent>
+              </Card>
+
+              {/* Props Table */}
+              <Card variant="gradient" scaleOnHover={false}>
+                <CardHeader title="Props Reference" />
+                <CardContent>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-sm">
+                      <thead>
+                        <tr className="border-b-2 border-gray-300 dark:border-gray-600">
+                          <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-300">Prop</th>
+                          <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-300">Type</th>
+                          <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-300">Default</th>
+                          <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-300">Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr className="border-b border-gray-200 dark:border-gray-700">
+                          <td className="py-3 px-4 font-mono text-xs text-purple-600 dark:text-purple-400">variant</td>
+                          <td className="py-3 px-4 text-gray-600 dark:text-gray-400">string</td>
+                          <td className="py-3 px-4 font-mono text-xs text-gray-600 dark:text-gray-400">'default'</td>
+                          <td className="py-3 px-4 text-gray-600 dark:text-gray-400">default | gradient | black | special | glass | neon</td>
+                        </tr>
+                        <tr className="border-b border-gray-200 dark:border-gray-700">
+                          <td className="py-3 px-4 font-mono text-xs text-purple-600 dark:text-purple-400">colorTheme</td>
+                          <td className="py-3 px-4 text-gray-600 dark:text-gray-400">string</td>
+                          <td className="py-3 px-4 font-mono text-xs text-gray-600 dark:text-gray-400">'blue'</td>
+                          <td className="py-3 px-4 text-gray-600 dark:text-gray-400">blue | cyan | purple | green | red | orange | yellow | pink</td>
+                        </tr>
+                        <tr className="border-b border-gray-200 dark:border-gray-700">
+                          <td className="py-3 px-4 font-mono text-xs text-purple-600 dark:text-purple-400">hoverable</td>
+                          <td className="py-3 px-4 text-gray-600 dark:text-gray-400">boolean</td>
+                          <td className="py-3 px-4 font-mono text-xs text-gray-600 dark:text-gray-400">true</td>
+                          <td className="py-3 px-4 text-gray-600 dark:text-gray-400">Controls border, shadow, and indicator dot on hover</td>
+                        </tr>
+                        <tr className="border-b border-gray-200 dark:border-gray-700">
+                          <td className="py-3 px-4 font-mono text-xs text-purple-600 dark:text-purple-400">scaleOnHover</td>
+                          <td className="py-3 px-4 text-gray-600 dark:text-gray-400">boolean</td>
+                          <td className="py-3 px-4 font-mono text-xs text-gray-600 dark:text-gray-400">true</td>
+                          <td className="py-3 px-4 text-gray-600 dark:text-gray-400">Controls scale transformation on hover (103% or 105% for special)</td>
+                        </tr>
+                        <tr className="border-b border-gray-200 dark:border-gray-700">
+                          <td className="py-3 px-4 font-mono text-xs text-purple-600 dark:text-purple-400">onClick</td>
+                          <td className="py-3 px-4 text-gray-600 dark:text-gray-400">function</td>
+                          <td className="py-3 px-4 font-mono text-xs text-gray-600 dark:text-gray-400">undefined</td>
+                          <td className="py-3 px-4 text-gray-600 dark:text-gray-400">Click handler, adds pointer cursor</td>
+                        </tr>
+                        <tr className="border-b border-gray-200 dark:border-gray-700">
+                          <td className="py-3 px-4 font-mono text-xs text-purple-600 dark:text-purple-400">className</td>
+                          <td className="py-3 px-4 text-gray-600 dark:text-gray-400">string</td>
+                          <td className="py-3 px-4 font-mono text-xs text-gray-600 dark:text-gray-400">''</td>
+                          <td className="py-3 px-4 text-gray-600 dark:text-gray-400">Additional CSS classes</td>
+                        </tr>
+                        <tr>
+                          <td className="py-3 px-4 font-mono text-xs text-purple-600 dark:text-purple-400">children</td>
+                          <td className="py-3 px-4 text-gray-600 dark:text-gray-400">ReactNode</td>
+                          <td className="py-3 px-4 font-mono text-xs text-gray-600 dark:text-gray-400">-</td>
+                          <td className="py-3 px-4 text-gray-600 dark:text-gray-400">Card content</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </CardContent>
+              </Card>
+            </section>
+          </CollapsibleCard>
+
+          {/* CollapsibleCard Component */}
+          <CollapsibleCard
+            title="CollapsibleCard Component"
+            subtitle="Expandable card with smooth animations and customization"
+            colorTheme="orange"
+            variant="default"
+            hoverable={false}
+            scaleOnHover={false}
+            collapsed={collapsibleSectionCollapsed}
+            onCollapseChange={setCollapsibleSectionCollapsed}
+          >
+            <section id="collapsible-section">
+              <Card variant="default" scaleOnHover={false}>
+                <CardHeader title="Features & Capabilities" />
+                <CardContent>
+                  <div className="space-y-2">
+                    <Feature text="4 variants: default, gradient, black, glass" />
+                    <Feature text="6 color themes: blue, cyan, purple, green, red, orange" />
+                    <Feature text="Smooth collapse/expand animation with height transitions" />
+                    <Feature text="Optional icon support with themed backgrounds" />
+                    <Feature text="Subtitle support" />
+                    <Feature text="Controlled or uncontrolled mode" />
+                    <Feature text="Independent hover controls (hoverable, scaleOnHover)" />
+                    <Feature text="Themed hover effects with animated borders and dots" />
+                    <Feature text="Color coordinated accent bars and chevron icons" />
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Variant Examples */}
+              <Card variant="gradient" scaleOnHover={false}>
+                <CardHeader title="CollapsibleCard Variants" />
+                <CardContent>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">Default</p>
+                      <CollapsibleCard
+                        title="Default Variant"
+                        subtitle="White background"
+                        variant="default"
+                        colorTheme="blue"
+                        defaultCollapsed={true}
+                        hoverable={true}
+                        scaleOnHover={false}
+                      >
+                        <p className="text-sm text-gray-700 dark:text-gray-300">
+                          White background with standard border
+                        </p>
+                      </CollapsibleCard>
+                    </div>
+
+                    <div className="space-y-2">
+                      <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">Gradient</p>
+                      <CollapsibleCard
+                        title="Gradient Variant"
+                        subtitle="Gray gradient"
+                        variant="gradient"
+                        colorTheme="purple"
+                        defaultCollapsed={true}
+                        hoverable={true}
+                        scaleOnHover={false}
+                      >
+                        <p className="text-sm text-gray-700 dark:text-gray-300">
+                          Gradient background effect
+                        </p>
+                      </CollapsibleCard>
+                    </div>
+
+                    <div className="space-y-2">
+                      <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">Black</p>
+                      <CollapsibleCard
+                        title="Black Variant"
+                        subtitle="Cyan accents"
+                        variant="black"
+                        colorTheme="cyan"
+                        defaultCollapsed={true}
+                        hoverable={true}
+                        scaleOnHover={false}
+                      >
+                        <p className="text-sm text-cyan-100">
+                          Pure black with cyan accents
+                        </p>
+                      </CollapsibleCard>
+                    </div>
+
+                    <div className="space-y-2">
+                      <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">Glass</p>
+                      <CollapsibleCard
+                        title="Glass Variant"
+                        subtitle="Glassmorphism"
+                        variant="glass"
+                        colorTheme="green"
+                        defaultCollapsed={true}
+                        hoverable={true}
+                        scaleOnHover={false}
+                      >
+                        <p className="text-sm text-gray-700 dark:text-gray-300">
+                          Glassmorphism with backdrop blur
+                        </p>
+                      </CollapsibleCard>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Color Themes */}
+              <Card variant="gradient" scaleOnHover={false}>
+                <CardHeader title="Color Themes" />
+                <CardContent>
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <div>
+                      <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Blue</p>
+                      <CollapsibleCard
+                        title="Blue Theme"
+                        colorTheme="blue"
+                        variant="default"
+                        defaultCollapsed={true}
+                        hoverable={true}
+                        scaleOnHover={false}
+                      >
+                        <p className="text-sm text-gray-700 dark:text-gray-300">Blue themed collapsible</p>
+                      </CollapsibleCard>
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Cyan</p>
+                      <CollapsibleCard
+                        title="Cyan Theme"
+                        colorTheme="cyan"
+                        variant="default"
+                        defaultCollapsed={true}
+                        hoverable={true}
+                        scaleOnHover={false}
+                      >
+                        <p className="text-sm text-gray-700 dark:text-gray-300">Cyan themed collapsible</p>
+                      </CollapsibleCard>
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Purple</p>
+                      <CollapsibleCard
+                        title="Purple Theme"
+                        colorTheme="purple"
+                        variant="default"
+                        defaultCollapsed={true}
+                        hoverable={true}
+                        scaleOnHover={false}
+                      >
+                        <p className="text-sm text-gray-700 dark:text-gray-300">Purple themed collapsible</p>
+                      </CollapsibleCard>
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Green</p>
+                      <CollapsibleCard
+                        title="Green Theme"
+                        colorTheme="green"
+                        variant="default"
+                        defaultCollapsed={true}
+                        hoverable={true}
+                        scaleOnHover={false}
+                      >
+                        <p className="text-sm text-gray-700 dark:text-gray-300">Green themed collapsible</p>
+                      </CollapsibleCard>
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Red</p>
+                      <CollapsibleCard
+                        title="Red Theme"
+                        colorTheme="red"
+                        variant="default"
+                        defaultCollapsed={true}
+                        hoverable={true}
+                        scaleOnHover={false}
+                      >
+                        <p className="text-sm text-gray-700 dark:text-gray-300">Red themed collapsible</p>
+                      </CollapsibleCard>
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Orange</p>
+                      <CollapsibleCard
+                        title="Orange Theme"
+                        colorTheme="orange"
+                        variant="default"
+                        defaultCollapsed={true}
+                        hoverable={true}
+                        scaleOnHover={false}
+                      >
+                        <p className="text-sm text-gray-700 dark:text-gray-300">Orange themed collapsible</p>
+                      </CollapsibleCard>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Hover Controls */}
+              <Card variant="gradient" scaleOnHover={false}>
+                <CardHeader title="Hover Control Options" />
+                <CardContent>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                        Full Hover (default)
+                      </p>
+                      <CollapsibleCard
+                        title="Full Hover"
+                        subtitle="All effects enabled"
+                        colorTheme="blue"
+                        variant="default"
+                        defaultCollapsed={true}
+                        hoverable={true}
+                        scaleOnHover={true}
+                      >
+                        <p className="text-sm text-gray-600 dark:text-gray-400">
+                          Border + Dot + Scale
+                        </p>
+                      </CollapsibleCard>
+                    </div>
+
+                    <div className="space-y-2">
+                      <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                        Border & Dot Only
+                      </p>
+                      <CollapsibleCard
+                        title="No Scale"
+                        subtitle="Border and dot only"
+                        colorTheme="cyan"
+                        variant="default"
+                        defaultCollapsed={true}
+                        hoverable={true}
+                        scaleOnHover={false}
+                      >
+                        <p className="text-sm text-gray-600 dark:text-gray-400">
+                          Border + Dot (No Scale)
+                        </p>
+                      </CollapsibleCard>
+                    </div>
+
+                    <div className="space-y-2">
+                      <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                        Scale Only
+                      </p>
+                      <CollapsibleCard
+                        title="Scale Only"
+                        subtitle="No border or dot"
+                        colorTheme="purple"
+                        variant="default"
+                        defaultCollapsed={true}
+                        hoverable={false}
+                        scaleOnHover={true}
+                      >
+                        <p className="text-sm text-gray-600 dark:text-gray-400">
+                          Scale Only (No Border/Dot)
+                        </p>
+                      </CollapsibleCard>
+                    </div>
+
+                    <div className="space-y-2">
+                      <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                        No Hover Effects
+                      </p>
+                      <CollapsibleCard
+                        title="Static Card"
+                        subtitle="No hover effects"
+                        colorTheme="green"
+                        variant="default"
+                        defaultCollapsed={true}
+                        hoverable={false}
+                        scaleOnHover={false}
+                      >
+                        <p className="text-sm text-gray-600 dark:text-gray-400">
+                          Static (No Hover Effects)
+                        </p>
+                      </CollapsibleCard>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Usage Examples */}
+              <Card variant="gradient" scaleOnHover={false}>
+                <CardHeader title="Usage Examples" />
+                <CardContent>
+                  <div className="space-y-6">
+                    <CollapsibleCard
+                      title="Uncontrolled Mode"
+                      subtitle="Manages its own state"
+                      icon={BarChart3}
+                      variant="default"
+                      colorTheme="blue"
+                      defaultCollapsed={false}
+                      hoverable={true}
+                      scaleOnHover={false}
+                    >
+                      <div className="space-y-3">
+                        <p className="text-gray-700 dark:text-gray-300">
+                          This collapsible card manages its own collapse state internally.
+                        </p>
+                        <p className="text-gray-600 dark:text-gray-400">
+                          Use defaultCollapsed prop to set initial state.
+                        </p>
+                      </div>
+                    </CollapsibleCard>
+
+                    <CollapsibleCard
+                      title="Controlled Mode"
+                      subtitle="External state control"
+                      icon={Calendar}
+                      variant="default"
+                      colorTheme="cyan"
+                      collapsed={isCollapsed}
+                      onCollapseChange={setIsCollapsed}
+                      hoverable={true}
+                      scaleOnHover={false}
+                    >
+                      <div className="space-y-3">
+                        <p className="text-gray-700 dark:text-gray-300">
+                          This card's collapse state is controlled externally.
+                        </p>
+                        <Button
+                          variant="solid"
+                          colorVariant="cyan"
+                          onClick={() => setIsCollapsed(!isCollapsed)}
+                        >
+                          Toggle from Inside
+                        </Button>
+                      </div>
+                    </CollapsibleCard>
+
+                    <CollapsibleCard
+                      title="Different Variants"
+                      subtitle="Gradient background"
+                      icon={Trophy}
+                      variant="gradient"
+                      colorTheme="purple"
+                      defaultCollapsed={true}
+                      hoverable={true}
+                      scaleOnHover={false}
+                    >
+                      <p className="text-gray-700 dark:text-gray-300">
+                        This collapsible card uses the gradient variant.
+                      </p>
+                    </CollapsibleCard>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Code Examples */}
+              <Card variant="default" scaleOnHover={false}>
+                <CardHeader title="Code Examples" />
+                <CardContent>
+                  <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
+                    {`import { CollapsibleCard } from './CollapsibleCard';
+import { BarChart3 } from 'lucide-react';
+
+// Uncontrolled (manages own state)
+<CollapsibleCard
+  title="Section Title"
+  subtitle="Optional subtitle"
+  icon={BarChart3}
+  variant="default"
+  colorTheme="blue"
+  defaultCollapsed={false}
+  hoverable={true}
+  scaleOnHover={false}
+>
+  <p>Your content here</p>
+</CollapsibleCard>
+
+// Controlled (external state)
+<CollapsibleCard
+  title="Controlled Section"
+  variant="gradient"
+  colorTheme="purple"
+  collapsed={isCollapsed}
+  onCollapseChange={setIsCollapsed}
+>
+  <p>Your content here</p>
+</CollapsibleCard>
+
+// Different color themes
+<CollapsibleCard
+  title="Orange Theme"
+  colorTheme="orange"
+  variant="default"
+>
+  <p>Content with orange accents</p>
+</CollapsibleCard>
+
+// Custom hover behavior
+<CollapsibleCard
+  title="Custom Hover"
+  hoverable={true}
+  scaleOnHover={false}
+>
+  <p>Border effects but no scale</p>
+</CollapsibleCard>`}
+                  </pre>
+                </CardContent>
+              </Card>
+
+              {/* Props Table */}
+              <Card variant="gradient" scaleOnHover={false}>
+                <CardHeader title="Props Reference" />
+                <CardContent>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-sm">
+                      <thead>
+                        <tr className="border-b-2 border-gray-300 dark:border-gray-600">
+                          <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-300">Prop</th>
+                          <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-300">Type</th>
+                          <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-300">Default</th>
+                          <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-300">Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr className="border-b border-gray-200 dark:border-gray-700">
+                          <td className="py-3 px-4 font-mono text-xs text-purple-600 dark:text-purple-400">title</td>
+                          <td className="py-3 px-4 text-gray-600 dark:text-gray-400">string</td>
+                          <td className="py-3 px-4 font-mono text-xs text-gray-600 dark:text-gray-400">required</td>
+                          <td className="py-3 px-4 text-gray-600 dark:text-gray-400">Header title text</td>
+                        </tr>
+                        <tr className="border-b border-gray-200 dark:border-gray-700">
+                          <td className="py-3 px-4 font-mono text-xs text-purple-600 dark:text-purple-400">subtitle</td>
+                          <td className="py-3 px-4 text-gray-600 dark:text-gray-400">string</td>
+                          <td className="py-3 px-4 font-mono text-xs text-gray-600 dark:text-gray-400">undefined</td>
+                          <td className="py-3 px-4 text-gray-600 dark:text-gray-400">Optional subtitle below title</td>
+                        </tr>
+                        <tr className="border-b border-gray-200 dark:border-gray-700">
+                          <td className="py-3 px-4 font-mono text-xs text-purple-600 dark:text-purple-400">icon</td>
+                          <td className="py-3 px-4 text-gray-600 dark:text-gray-400">Component</td>
+                          <td className="py-3 px-4 font-mono text-xs text-gray-600 dark:text-gray-400">undefined</td>
+                          <td className="py-3 px-4 text-gray-600 dark:text-gray-400">Lucide icon component</td>
+                        </tr>
+                        <tr className="border-b border-gray-200 dark:border-gray-700">
+                          <td className="py-3 px-4 font-mono text-xs text-purple-600 dark:text-purple-400">variant</td>
+                          <td className="py-3 px-4 text-gray-600 dark:text-gray-400">string</td>
+                          <td className="py-3 px-4 font-mono text-xs text-gray-600 dark:text-gray-400">'default'</td>
+                          <td className="py-3 px-4 text-gray-600 dark:text-gray-400">default | gradient | black | glass</td>
+                        </tr>
+                        <tr className="border-b border-gray-200 dark:border-gray-700">
+                          <td className="py-3 px-4 font-mono text-xs text-purple-600 dark:text-purple-400">colorTheme</td>
+                          <td className="py-3 px-4 text-gray-600 dark:text-gray-400">string</td>
+                          <td className="py-3 px-4 font-mono text-xs text-gray-600 dark:text-gray-400">'blue'</td>
+                          <td className="py-3 px-4 text-gray-600 dark:text-gray-400">blue | cyan | purple | green | red | orange</td>
+                        </tr>
+                        <tr className="border-b border-gray-200 dark:border-gray-700">
+                          <td className="py-3 px-4 font-mono text-xs text-purple-600 dark:text-purple-400">defaultCollapsed</td>
+                          <td className="py-3 px-4 text-gray-600 dark:text-gray-400">boolean</td>
+                          <td className="py-3 px-4 font-mono text-xs text-gray-600 dark:text-gray-400">false</td>
+                          <td className="py-3 px-4 text-gray-600 dark:text-gray-400">Initial collapsed state (uncontrolled mode)</td>
+                        </tr>
+                        <tr className="border-b border-gray-200 dark:border-gray-700">
+                          <td className="py-3 px-4 font-mono text-xs text-purple-600 dark:text-purple-400">collapsed</td>
+                          <td className="py-3 px-4 text-gray-600 dark:text-gray-400">boolean</td>
+                          <td className="py-3 px-4 font-mono text-xs text-gray-600 dark:text-gray-400">undefined</td>
+                          <td className="py-3 px-4 text-gray-600 dark:text-gray-400">Controlled collapsed state</td>
+                        </tr>
+                        <tr className="border-b border-gray-200 dark:border-gray-700">
+                          <td className="py-3 px-4 font-mono text-xs text-purple-600 dark:text-purple-400">onCollapseChange</td>
+                          <td className="py-3 px-4 text-gray-600 dark:text-gray-400">function</td>
+                          <td className="py-3 px-4 font-mono text-xs text-gray-600 dark:text-gray-400">undefined</td>
+                          <td className="py-3 px-4 text-gray-600 dark:text-gray-400">Callback when collapse state changes</td>
+                        </tr>
+                        <tr className="border-b border-gray-200 dark:border-gray-700">
+                          <td className="py-3 px-4 font-mono text-xs text-purple-600 dark:text-purple-400">hoverable</td>
+                          <td className="py-3 px-4 text-gray-600 dark:text-gray-400">boolean</td>
+                          <td className="py-3 px-4 font-mono text-xs text-gray-600 dark:text-gray-400">true</td>
+                          <td className="py-3 px-4 text-gray-600 dark:text-gray-400">Controls border, shadow, and indicator dot on hover</td>
+                        </tr>
+                        <tr className="border-b border-gray-200 dark:border-gray-700">
+                          <td className="py-3 px-4 font-mono text-xs text-purple-600 dark:text-purple-400">scaleOnHover</td>
+                          <td className="py-3 px-4 text-gray-600 dark:text-gray-400">boolean</td>
+                          <td className="py-3 px-4 font-mono text-xs text-gray-600 dark:text-gray-400">true</td>
+                          <td className="py-3 px-4 text-gray-600 dark:text-gray-400">Controls scale transformation on hover (103%)</td>
+                        </tr>
+                        <tr>
+                          <td className="py-3 px-4 font-mono text-xs text-purple-600 dark:text-purple-400">children</td>
+                          <td className="py-3 px-4 text-gray-600 dark:text-gray-400">ReactNode</td>
+                          <td className="py-3 px-4 font-mono text-xs text-gray-600 dark:text-gray-400">required</td>
+                          <td className="py-3 px-4 text-gray-600 dark:text-gray-400">Collapsible content</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </CardContent>
+              </Card>
+            </section>
+          </CollapsibleCard>
+
           {/* Button Component */}
-          <section id="button-section">
-            <PageContainer>
-              <PageHeader
-                title="Button Component"
-                subtitle="Multi variant buttons with icons and states"
-                accentColor="blue"
-              />
-              <Card variant="default">
+          <CollapsibleCard
+            title="Button Component"
+            subtitle="Multi variant buttons with icons and states"
+            colorTheme="blue"
+            variant="default"
+            hoverable={false}
+            scaleOnHover={false}
+            collapsed={buttonSectionCollapsed}
+            onCollapseChange={setButtonSectionCollapsed}
+          >
+            <section id="button-section">
+              <Card variant="default" scaleOnHover={false}>
                 <CardHeader title="Features & Capabilities" />
                 <CardContent>
                   <div className="space-y-2">
@@ -217,8 +1183,7 @@ export default function ShowcasePage() {
                 </CardContent>
               </Card>
 
-              {/* Button Examples */}
-              <Card variant="default">
+              <Card variant="default" scaleOnHover={false}>
                 <CardHeader title="Solid Buttons" />
                 <CardContent>
                   <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
@@ -231,7 +1196,7 @@ export default function ShowcasePage() {
                 </CardContent>
               </Card>
 
-              <Card variant="default">
+              <Card variant="default" scaleOnHover={false}>
                 <CardHeader title="Underline Buttons" />
                 <CardContent>
                   <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
@@ -244,7 +1209,7 @@ export default function ShowcasePage() {
                 </CardContent>
               </Card>
 
-              <Card variant="default">
+              <Card variant="default" scaleOnHover={false}>
                 <CardHeader title="Buttons with Icons" />
                 <CardContent>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -257,7 +1222,7 @@ export default function ShowcasePage() {
                 </CardContent>
               </Card>
 
-              <Card variant="default">
+              <Card variant="default" scaleOnHover={false}>
                 <CardHeader title="Button Sizes" />
                 <CardContent>
                   <div className="flex flex-wrap items-center gap-4">
@@ -268,8 +1233,7 @@ export default function ShowcasePage() {
                 </CardContent>
               </Card>
 
-              {/* Code Example */}
-              <Card variant="default">
+              <Card variant="default" scaleOnHover={false}>
                 <CardHeader title="Code Example" />
                 <CardContent>
                   <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
@@ -297,18 +1261,22 @@ import { Upload } from 'lucide-react';
                   </pre>
                 </CardContent>
               </Card>
-            </PageContainer>
-          </section>
+            </section>
+          </CollapsibleCard>
 
           {/* Input Component */}
-          <section id="input-section">
-            <PageContainer>
-              <PageHeader
-                title="Input Component"
-                subtitle="Form inputs with validation and icons"
-                accentColor="green"
-              />
-              <Card variant="default">
+          <CollapsibleCard
+            title="Input Component"
+            subtitle="Form inputs with validation and icons"
+            colorTheme="green"
+            variant="default"
+            hoverable={false}
+            scaleOnHover={false}
+            collapsed={inputSectionCollapsed}
+            onCollapseChange={setInputSectionCollapsed}
+          >
+            <section id="input-section">
+              <Card variant="default" scaleOnHover={false}>
                 <CardHeader title="Features & Capabilities" />
                 <CardContent>
                   <div className="space-y-2">
@@ -323,7 +1291,7 @@ import { Upload } from 'lucide-react';
                 </CardContent>
               </Card>
 
-              <Card variant="default">
+              <Card variant="default" scaleOnHover={false}>
                 <CardHeader title="Input Examples" />
                 <CardContent>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -367,8 +1335,7 @@ import { Upload } from 'lucide-react';
                 </CardContent>
               </Card>
 
-              {/* Code Example */}
-              <Card variant="default">
+              <Card variant="default" scaleOnHover={false}>
                 <CardHeader title="Code Example" />
                 <CardContent>
                   <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
@@ -402,18 +1369,130 @@ import { Search } from 'lucide-react';
                   </pre>
                 </CardContent>
               </Card>
-            </PageContainer>
-          </section>
+            </section>
+          </CollapsibleCard>
+
+          {/* Input Component */}
+          <CollapsibleCard
+            title="Input Component"
+            subtitle="Form inputs with validation and icons"
+            colorTheme="green"
+            variant="default"
+            hoverable={false}
+            scaleOnHover={false}
+            collapsed={inputSectionCollapsed}
+            onCollapseChange={setInputSectionCollapsed}
+          >
+            <section id="input-section">
+              <Card variant="default" scaleOnHover={false}>
+                <CardHeader title="Features & Capabilities" />
+                <CardContent>
+                  <div className="space-y-2">
+                    <Feature text="Multiple input types: text, email, password, number, date, time" />
+                    <Feature text="4 variants: default, black, glass, minimal" />
+                    <Feature text="Color themes: blue, cyan, purple, green" />
+                    <Feature text="Icon support on left or right side" />
+                    <Feature text="Label and error message display" />
+                    <Feature text="Required field indicator" />
+                    <Feature text="Disabled state styling" />
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card variant="default" scaleOnHover={false}>
+                <CardHeader title="Input Examples" />
+                <CardContent>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <Input
+                      label="Text Input"
+                      type="text"
+                      placeholder="Enter your name..."
+                      value={inputValue}
+                      onChange={setInputValue}
+                    />
+                    <Input
+                      label="Email Input"
+                      type="email"
+                      placeholder="Enter your email..."
+                      value={emailInput}
+                      onChange={setEmailInput}
+                    />
+                    <Input
+                      label="Date Input"
+                      type="date"
+                    />
+                    <Input
+                      label="Search Input"
+                      type="text"
+                      placeholder="Search..."
+                      icon={Search}
+                    />
+                    <Input
+                      label="Required Field"
+                      type="text"
+                      placeholder="Required..."
+                      required
+                    />
+                    <Input
+                      label="Disabled Input"
+                      type="text"
+                      placeholder="Disabled..."
+                      disabled
+                    />
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card variant="default" scaleOnHover={false}>
+                <CardHeader title="Code Example" />
+                <CardContent>
+                  <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
+                    {`import { Input } from './Input';
+import { Search } from 'lucide-react';
+
+// Basic usage
+<Input
+  label="Username"
+  type="text"
+  placeholder="Enter username..."
+  value={value}
+  onChange={setValue}
+/>
+
+// With icon
+<Input
+  label="Search"
+  type="text"
+  placeholder="Search..."
+  icon={Search}
+/>
+
+// Required field
+<Input
+  label="Email"
+  type="email"
+  required
+  error="Please enter a valid email"
+/>`}
+                  </pre>
+                </CardContent>
+              </Card>
+            </section>
+          </CollapsibleCard>
 
           {/* Textarea Component */}
-          <section id="textarea-section">
-            <PageContainer>
-              <PageHeader
-                title="Textarea Component"
-                subtitle="Multi line text input with variants"
-                accentColor="purple"
-              />
-              <Card variant="default">
+          <CollapsibleCard
+            title="Textarea Component"
+            subtitle="Multi line text input with variants"
+            colorTheme="purple"
+            variant="default"
+            hoverable={false}
+            scaleOnHover={false}
+            collapsed={textareaSectionCollapsed}
+            onCollapseChange={setTextareaSectionCollapsed}
+          >
+            <section id="textarea-section">
+              <Card variant="default" scaleOnHover={false}>
                 <CardHeader title="Features & Capabilities" />
                 <CardContent>
                   <div className="space-y-2">
@@ -428,7 +1507,7 @@ import { Search } from 'lucide-react';
                 </CardContent>
               </Card>
 
-              <Card variant="default">
+              <Card variant="default" scaleOnHover={false}>
                 <CardHeader title="Textarea Examples" />
                 <CardContent>
                   <div className="space-y-6">
@@ -455,8 +1534,7 @@ import { Search } from 'lucide-react';
                 </CardContent>
               </Card>
 
-              {/* Code Example */}
-              <Card variant="default">
+              <Card variant="default" scaleOnHover={false}>
                 <CardHeader title="Code Example" />
                 <CardContent>
                   <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
@@ -478,7 +1556,7 @@ import { Search } from 'lucide-react';
   placeholder="Tell us about yourself..."
 />
 
-// Fixed height (non-resizable)
+// Fixed height (non resizable)
 <Textarea
   label="Comment"
   resize={false}
@@ -487,18 +1565,22 @@ import { Search } from 'lucide-react';
                   </pre>
                 </CardContent>
               </Card>
-            </PageContainer>
-          </section>
+            </section>
+          </CollapsibleCard>
 
           {/* Dropdown Component */}
-          <section id="dropdown-section">
-            <PageContainer>
-              <PageHeader
-                title="Dropdown Component"
-                subtitle="Styled select dropdowns"
-                accentColor="cyan"
-              />
-              <Card variant="default">
+          <CollapsibleCard
+            title="Dropdown Component"
+            subtitle="Styled select dropdowns"
+            colorTheme="cyan"
+            variant="default"
+            hoverable={false}
+            scaleOnHover={false}
+            collapsed={dropdownSectionCollapsed}
+            onCollapseChange={setDropdownSectionCollapsed}
+          >
+            <section id="dropdown-section">
+              <Card variant="default" scaleOnHover={false}>
                 <CardHeader title="Features & Capabilities" />
                 <CardContent>
                   <div className="space-y-2">
@@ -512,7 +1594,7 @@ import { Search } from 'lucide-react';
                 </CardContent>
               </Card>
 
-              <Card variant="default">
+              <Card variant="default" scaleOnHover={false}>
                 <CardHeader title="Dropdown Examples" />
                 <CardContent>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -539,8 +1621,7 @@ import { Search } from 'lucide-react';
                 </CardContent>
               </Card>
 
-              {/* Code Example */}
-              <Card variant="default">
+              <Card variant="default" scaleOnHover={false}>
                 <CardHeader title="Code Example" />
                 <CardContent>
                   <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
@@ -560,18 +1641,22 @@ import { Search } from 'lucide-react';
                   </pre>
                 </CardContent>
               </Card>
-            </PageContainer>
-          </section>
+            </section>
+          </CollapsibleCard>
 
           {/* RadioButton Component */}
-          <section id="radiobutton-section">
-            <PageContainer>
-              <PageHeader
-                title="RadioButton Component"
-                subtitle="Animated radio selection with underline effects"
-                accentColor="blue"
-              />
-              <Card variant="default">
+          <CollapsibleCard
+            title="RadioButton Component"
+            subtitle="Animated radio selection with underline effects"
+            colorTheme="blue"
+            variant="default"
+            hoverable={false}
+            scaleOnHover={false}
+            collapsed={radioSectionCollapsed}
+            onCollapseChange={setRadioSectionCollapsed}
+          >
+            <section id="radiobutton-section">
+              <Card variant="default" scaleOnHover={false}>
                 <CardHeader title="Features & Capabilities" />
                 <CardContent>
                   <div className="space-y-2">
@@ -585,7 +1670,7 @@ import { Search } from 'lucide-react';
                 </CardContent>
               </Card>
 
-              <Card variant="default">
+              <Card variant="default" scaleOnHover={false}>
                 <CardHeader title="RadioButton Examples" />
                 <CardContent>
                   <div className="space-y-6">
@@ -656,8 +1741,7 @@ import { Search } from 'lucide-react';
                 </CardContent>
               </Card>
 
-              {/* Code Example */}
-              <Card variant="default">
+              <Card variant="default" scaleOnHover={false}>
                 <CardHeader title="Code Example" />
                 <CardContent>
                   <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
@@ -674,18 +1758,22 @@ import { Search } from 'lucide-react';
                   </pre>
                 </CardContent>
               </Card>
-            </PageContainer>
-          </section>
+            </section>
+          </CollapsibleCard>
 
           {/* InfoButton Component */}
-          <section id="infobutton-section">
-            <PageContainer>
-              <PageHeader
-                title="InfoButton Component"
-                subtitle="Tooltip info buttons with multiple icons"
-                accentColor="yellow"
-              />
-              <Card variant="default">
+          <CollapsibleCard
+            title="InfoButton Component"
+            subtitle="Tooltip info buttons with multiple icons"
+            colorTheme="yellow"
+            variant="default"
+            hoverable={false}
+            scaleOnHover={false}
+            collapsed={infoButtonSectionCollapsed}
+            onCollapseChange={setInfoButtonSectionCollapsed}
+          >
+            <section id="infobutton-section">
+              <Card variant="default" scaleOnHover={false}>
                 <CardHeader title="Features & Capabilities" />
                 <CardContent>
                   <div className="space-y-2">
@@ -699,7 +1787,7 @@ import { Search } from 'lucide-react';
                 </CardContent>
               </Card>
 
-              <Card variant="default">
+              <Card variant="default" scaleOnHover={false}>
                 <CardHeader title="InfoButton Examples" />
                 <CardContent>
                   <div className="space-y-6">
@@ -756,8 +1844,7 @@ import { Search } from 'lucide-react';
                 </CardContent>
               </Card>
 
-              {/* Code Example */}
-              <Card variant="default">
+              <Card variant="default" scaleOnHover={false}>
                 <CardHeader title="Code Example" />
                 <CardContent>
                   <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
@@ -779,18 +1866,22 @@ import { Search } from 'lucide-react';
                   </pre>
                 </CardContent>
               </Card>
-            </PageContainer>
-          </section>
+            </section>
+          </CollapsibleCard>
 
           {/* AlertCard Component */}
-          <section id="alertcard-section">
-            <PageContainer>
-              <PageHeader
-                title="AlertCard Component"
-                subtitle="Contextual alert messages"
-                accentColor="red"
-              />
-              <Card variant="default">
+          <CollapsibleCard
+            title="AlertCard Component"
+            subtitle="Contextual alert messages"
+            colorTheme="red"
+            variant="default"
+            hoverable={false}
+            scaleOnHover={false}
+            collapsed={alertSectionCollapsed}
+            onCollapseChange={setAlertSectionCollapsed}
+          >
+            <section id="alertcard-section">
+              <Card variant="default" scaleOnHover={false}>
                 <CardHeader title="Features & Capabilities" />
                 <CardContent>
                   <div className="space-y-2">
@@ -804,7 +1895,7 @@ import { Search } from 'lucide-react';
                 </CardContent>
               </Card>
 
-              <Card variant="default">
+              <Card variant="default" scaleOnHover={false}>
                 <CardHeader title="AlertCard Examples" />
                 <CardContent>
                   <div className="space-y-4">
@@ -832,7 +1923,7 @@ import { Search } from 'lucide-react';
                 </CardContent>
               </Card>
 
-              <Card variant="default">
+              <Card variant="default" scaleOnHover={false}>
                 <CardHeader title="Minimal Variant" />
                 <CardContent>
                   <div className="space-y-4">
@@ -850,8 +1941,7 @@ import { Search } from 'lucide-react';
                 </CardContent>
               </Card>
 
-              {/* Code Example */}
-              <Card variant="default">
+              <Card variant="default" scaleOnHover={false}>
                 <CardHeader title="Code Example" />
                 <CardContent>
                   <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
@@ -878,18 +1968,22 @@ import { Search } from 'lucide-react';
                   </pre>
                 </CardContent>
               </Card>
-            </PageContainer>
-          </section>
+            </section>
+          </CollapsibleCard>
 
           {/* StatCard Component */}
-          <section id="statcard-section">
-            <PageContainer>
-              <PageHeader
-                title="StatCard Component"
-                subtitle="Metric cards with trend indicators"
-                accentColor="green"
-              />
-              <Card variant="default">
+          <CollapsibleCard
+            title="StatCard Component"
+            subtitle="Metric cards with trend indicators"
+            colorTheme="green"
+            variant="default"
+            hoverable={false}
+            scaleOnHover={false}
+            collapsed={statSectionCollapsed}
+            onCollapseChange={setStatSectionCollapsed}
+          >
+            <section id="statcard-section">
+              <Card variant="default" scaleOnHover={false}>
                 <CardHeader title="Features & Capabilities" />
                 <CardContent>
                   <div className="space-y-2">
@@ -903,7 +1997,6 @@ import { Search } from 'lucide-react';
                   </div>
                 </CardContent>
               </Card>
-
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-10">
                 <StatCard
@@ -955,9 +2048,7 @@ import { Search } from 'lucide-react';
                 />
               </div>
 
-
-              {/* Code Example */}
-              <Card variant="default">
+              <Card variant="default" scaleOnHover={false}>
                 <CardHeader title="Code Example" />
                 <CardContent>
                   <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
@@ -985,18 +2076,22 @@ import { Search } from 'lucide-react';
                   </pre>
                 </CardContent>
               </Card>
-            </PageContainer>
-          </section>
+            </section>
+          </CollapsibleCard>
 
           {/* Table Component */}
-          <section id="table-section">
-            <PageContainer>
-              <PageHeader
-                title="Table Component"
-                subtitle="Data tables with hover effects"
-                accentColor="blue"
-              />
-              <Card variant="default">
+          <CollapsibleCard
+            title="Table Component"
+            subtitle="Data tables with hover effects"
+            colorTheme="blue"
+            variant="default"
+            hoverable={false}
+            scaleOnHover={false}
+            collapsed={tableSectionCollapsed}
+            onCollapseChange={setTableSectionCollapsed}
+          >
+            <section id="table-section">
+              <Card variant="default" scaleOnHover={false}>
                 <CardHeader title="Features & Capabilities" />
                 <CardContent>
                   <div className="space-y-2">
@@ -1011,7 +2106,7 @@ import { Search } from 'lucide-react';
                 </CardContent>
               </Card>
 
-              <Card variant="default">
+              <Card variant="default" scaleOnHover={false}>
                 <CardHeader title="Table Example" />
                 <CardContent>
                   <Table
@@ -1045,8 +2140,7 @@ import { Search } from 'lucide-react';
                 </CardContent>
               </Card>
 
-              {/* Code Example */}
-              <Card variant="default">
+              <Card variant="default" scaleOnHover={false}>
                 <CardHeader title="Code Example" />
                 <CardContent>
                   <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
@@ -1071,18 +2165,22 @@ import { Search } from 'lucide-react';
                   </pre>
                 </CardContent>
               </Card>
-            </PageContainer>
-          </section>
+            </section>
+          </CollapsibleCard>
 
           {/* NoDataCard Component */}
-          <section id="nodata-section">
-            <PageContainer>
-              <PageHeader
-                title="NoDataCard Component"
-                subtitle="Empty state display"
-                accentColor="gray"
-              />
-              <Card variant="default">
+          <CollapsibleCard
+            title="NoDataCard Component"
+            subtitle="Empty state display"
+            colorTheme="gray"
+            variant="default"
+            hoverable={false}
+            scaleOnHover={false}
+            collapsed={noDataSectionCollapsed}
+            onCollapseChange={setNoDataSectionCollapsed}
+          >
+            <section id="nodata-section">
+              <Card variant="default" scaleOnHover={false}>
                 <CardHeader title="Features & Capabilities" />
                 <CardContent>
                   <div className="space-y-2">
@@ -1095,7 +2193,7 @@ import { Search } from 'lucide-react';
                 </CardContent>
               </Card>
 
-              <Card variant="default" style={{ minHeight: '300px' }}>
+              <Card variant="default" scaleOnHover={false} style={{ minHeight: '300px' }}>
                 <CardHeader title="NoDataCard Example" />
                 <CardContent>
                   <NoDataCard
@@ -1105,8 +2203,7 @@ import { Search } from 'lucide-react';
                 </CardContent>
               </Card>
 
-              {/* Code Example */}
-              <Card variant="default">
+              <Card variant="default" scaleOnHover={false}>
                 <CardHeader title="Code Example" />
                 <CardContent>
                   <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
@@ -1120,18 +2217,22 @@ import { Search } from 'lucide-react';
                   </pre>
                 </CardContent>
               </Card>
-            </PageContainer>
-          </section>
+            </section>
+          </CollapsibleCard>
 
           {/* Stepper Component */}
-          <section id="stepper-section">
-            <PageContainer>
-              <PageHeader
-                title="Stepper Component"
-                subtitle="Multi step progress indicator"
-                accentColor="purple"
-              />
-              <Card variant="default">
+          <CollapsibleCard
+            title="Stepper Component"
+            subtitle="Multi step progress indicator"
+            colorTheme="purple"
+            variant="default"
+            hoverable={false}
+            scaleOnHover={false}
+            collapsed={stepperSectionCollapsed}
+            onCollapseChange={setStepperSectionCollapsed}
+          >
+            <section id="stepper-section">
+              <Card variant="default" scaleOnHover={false}>
                 <CardHeader title="Features & Capabilities" />
                 <CardContent>
                   <div className="space-y-2">
@@ -1146,7 +2247,7 @@ import { Search } from 'lucide-react';
                 </CardContent>
               </Card>
 
-              <Card variant="default">
+              <Card variant="default" scaleOnHover={false}>
                 <CardHeader title="Stepper Examples" />
                 <CardContent>
                   <div className="space-y-8">
@@ -1211,8 +2312,7 @@ import { Search } from 'lucide-react';
                 </CardContent>
               </Card>
 
-              {/* Code Example */}
-              <Card variant="default">
+              <Card variant="default" scaleOnHover={false}>
                 <CardHeader title="Code Example" />
                 <CardContent>
                   <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
@@ -1240,122 +2340,8 @@ import { Search } from 'lucide-react';
                   </pre>
                 </CardContent>
               </Card>
-            </PageContainer>
-          </section>
-
-          {/* CollapsibleCard Component */}
-          <section id="collapsible-section">
-            <PageContainer>
-              <PageHeader
-                title="CollapsibleCard Component"
-                subtitle="Expandable card with smooth animations"
-                accentColor="orange"
-              />
-              <Card variant="default">
-                <CardHeader title="Features & Capabilities" />
-                <CardContent>
-                  <div className="space-y-2">
-                    <Feature text="4 variants: default, gradient, black, glass" />
-                    <Feature text="3 color themes: blue, cyan, purple" />
-                    <Feature text="Smooth collapse/expand animation" />
-                    <Feature text="Optional icon support" />
-                    <Feature text="Subtitle support" />
-                    <Feature text="Controlled or uncontrolled mode" />
-                    <Feature text="Hover effects with animated border" />
-                  </div>
-                </CardContent>
-              </Card>
-
-              <div className="space-y-6">
-                <CollapsibleCard
-                  title="Collapsible Section"
-                  subtitle="Click to expand or collapse"
-                  icon={BarChart3}
-                  variant="default"
-                  colorTheme="blue"
-                  defaultCollapsed={false}
-                >
-                  <div className="space-y-3">
-                    <p className="text-gray-700 dark:text-gray-300">
-                      This is the content inside the collapsible card. You can put any content here including text, images, or other components.
-                    </p>
-                    <p className="text-gray-600 dark:text-gray-400">
-                      The card smoothly animates when expanding or collapsing.
-                    </p>
-                  </div>
-                </CollapsibleCard>
-
-                <CollapsibleCard
-                  title="Gradient Variant"
-                  subtitle="With gradient background"
-                  icon={Trophy}
-                  variant="gradient"
-                  colorTheme="purple"
-                  defaultCollapsed={true}
-                >
-                  <p className="text-gray-700 dark:text-gray-300">
-                    This collapsible card uses the gradient variant for a different visual style.
-                  </p>
-                </CollapsibleCard>
-
-                <CollapsibleCard
-                  title="Controlled Collapse"
-                  subtitle="Controlled by external state"
-                  icon={Calendar}
-                  variant="default"
-                  colorTheme="cyan"
-                  collapsed={isCollapsed}
-                  onCollapseChange={setIsCollapsed}
-                >
-                  <div className="space-y-3">
-                    <p className="text-gray-700 dark:text-gray-300">
-                      This card's collapse state is controlled externally.
-                    </p>
-                    <Button
-                      variant="solid"
-                      colorVariant="cyan"
-                      onClick={() => setIsCollapsed(!isCollapsed)}
-                    >
-                      Toggle from Inside
-                    </Button>
-                  </div>
-                </CollapsibleCard>
-              </div>
-
-              {/* Code Example */}
-              <Card variant="default">
-                <CardHeader title="Code Example" />
-                <CardContent>
-                  <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
-                    {`import { CollapsibleCard } from './CollapsibleCard';
-import { BarChart3 } from 'lucide-react';
-
-// Uncontrolled (manages own state)
-<CollapsibleCard
-  title="Section Title"
-  subtitle="Optional subtitle"
-  icon={BarChart3}
-  variant="default"
-  colorTheme="blue"
-  defaultCollapsed={false}
->
-  <p>Your content here</p>
-</CollapsibleCard>
-
-// Controlled (external state)
-<CollapsibleCard
-  title="Controlled Section"
-  variant="gradient"
-  collapsed={isCollapsed}
-  onCollapseChange={setIsCollapsed}
->
-  <p>Your content here</p>
-</CollapsibleCard>`}
-                  </pre>
-                </CardContent>
-              </Card>
-            </PageContainer>
-          </section>
+            </section>
+          </CollapsibleCard>
         </PageContainer>
       </div>
     </main>

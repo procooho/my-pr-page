@@ -26,8 +26,11 @@ export const Card = ({
   variant = 'default',
   colorTheme = 'blue',
   hoverable = true,
+  scaleOnHover = true,
   onClick,
 }) => {
+  const [isHovered, setIsHovered] = React.useState(false);
+
   // Color theme mappings for borders and accents
   const colorThemes = {
     blue: {
@@ -82,62 +85,78 @@ export const Card = ({
 
   const theme = colorThemes[colorTheme] || colorThemes.blue;
 
-  // Variant class mappings
+  // Scale classes separated from other hover effects
+  const scaleClass = scaleOnHover
+    ? variant === 'special'
+      ? 'hover:scale-[105%]'
+      : 'hover:scale-[103%]'
+    : '';
+
+  // Variant class mappings (without scale)
   const variantClasses = {
-    default: `bg-white dark:bg-gray-800 shadow-lg border-2 ${theme.border} ${hoverable ? 'hover:scale-[103%]' : ''}`,
-    
-    gradient: `bg-gradient-to-br from-gray-50 to-gray-300 dark:from-gray-700 dark:to-gray-900 shadow-lg border-2 ${theme.border} ${hoverable ? 'hover:scale-[103%]' : ''}`,
-    
-    black: `bg-black dark:bg-black shadow-2xl border-2 border-cyan-500/50 dark:border-cyan-400/50 ${hoverable ? 'hover:scale-[103%] hover:border-cyan-400 hover:shadow-cyan-500/50' : ''}`,
-    
-    special: `bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-gray-900 dark:to-cyan-950 shadow-2xl border-2 border-blue-400 dark:border-cyan-500 ${hoverable ? 'hover:scale-[105%]' : ''} ring-4 ${theme.ring}`,
-    
-    glass: `bg-white/10 dark:bg-white/5 backdrop-blur-md shadow-xl border border-white/20 dark:border-white/10 ${hoverable ? 'hover:scale-[103%] hover:bg-white/20 dark:hover:bg-white/10' : ''}`,
-    
-    neon: `bg-gray-900 dark:bg-black shadow-2xl border-2 ${theme.border} ${hoverable ? 'hover:scale-[103%] hover:shadow-cyan-500/50' : ''} relative overflow-hidden`,
+    default: `bg-white dark:bg-gray-800 shadow-lg border-2 ${theme.border}`,
+
+    gradient: `bg-gradient-to-br from-gray-50 to-gray-300 dark:from-gray-700 dark:to-gray-900 shadow-lg border-2 ${theme.border}`,
+
+    black: `bg-black dark:bg-black shadow-2xl border-2 border-cyan-500/50 dark:border-cyan-400/50 ${scaleOnHover ? 'hover:border-cyan-400 hover:shadow-cyan-500/50' : ''}`,
+
+    special: `bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-gray-900 dark:to-cyan-950 shadow-2xl border-2 border-blue-400 dark:border-cyan-500 ring-4 ${theme.ring}`,
+
+    glass: `bg-white/10 dark:bg-white/5 backdrop-blur-md shadow-xl border border-white/20 dark:border-white/10 ${scaleOnHover ? 'hover:bg-white/20 dark:hover:bg-white/10' : ''}`,
+
+    neon: `bg-gray-900 dark:bg-black shadow-2xl border-2 ${theme.border} ${scaleOnHover ? 'hover:shadow-cyan-500/50' : ''} relative overflow-hidden`,
   };
 
-  const hoverBorderClass = variant === 'special' 
+  const hoverBorderClass = variant === 'special'
     ? 'border-cyan-400 dark:border-cyan-400 group-hover:animate-pulse group-hover:shadow-lg group-hover:shadow-cyan-500/50'
     : variant === 'black'
-    ? 'border-cyan-400 dark:border-cyan-300 group-hover:animate-pulse'
-    : variant === 'neon'
-    ? `${theme.hoverBorder} group-hover:animate-pulse group-hover:shadow-lg group-hover:shadow-cyan-500/50`
-    : `${theme.hoverBorder} group-hover:animate-pulse`;
+      ? 'border-cyan-400 dark:border-cyan-300 group-hover:animate-pulse'
+      : variant === 'neon'
+        ? `${theme.hoverBorder} group-hover:animate-pulse group-hover:shadow-lg group-hover:shadow-cyan-500/50`
+        : `${theme.hoverBorder} group-hover:animate-pulse`;
 
   const dotSize = variant === 'special' ? 'w-3 h-3' : 'w-2 h-2';
-  const dotClass = variant === 'special' 
+  const dotClass = variant === 'special'
     ? 'bg-cyan-400 shadow-lg shadow-cyan-500/50 animate-pulse'
     : variant === 'black'
-    ? 'bg-cyan-400'
-    : theme.dot;
+      ? 'bg-cyan-400'
+      : theme.dot;
 
   return (
     <div
       className={`
-        group relative rounded-xl transition-all duration-200 my-5
+        relative rounded-xl transition-all duration-200 my-5
         ${variantClasses[variant]} 
-        ${hoverable ? 'hover:shadow-md' : ''}
+        ${scaleClass}
+        ${hoverable && isHovered ? 'shadow-md' : ''}
         ${onClick ? 'cursor-pointer' : ''}
         ${className}
       `}
       onClick={onClick}
+      onMouseEnter={() => hoverable && setIsHovered(true)}
+      onMouseLeave={() => hoverable && setIsHovered(false)}
     >
       {/* Neon glow effect for neon variant */}
-      {variant === 'neon' && (
-        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 via-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl blur-xl" />
+      {variant === 'neon' && hoverable && (
+        <div
+          className={`absolute inset-0 bg-gradient-to-r from-cyan-500/20 via-blue-500/20 to-purple-500/20 transition-opacity duration-300 rounded-xl blur-xl pointer-events-none ${isHovered ? 'opacity-100' : 'opacity-0'}`}
+        />
       )}
 
       {/* Animated border overlay on hover */}
       {hoverable && (
-        <div className={`absolute inset-[-2px] rounded-xl border-2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10 ${hoverBorderClass}`} />
+        <div
+          className={`absolute inset-[-2px] rounded-xl border-2 transition-opacity pointer-events-none z-10 ${hoverBorderClass} ${isHovered ? 'opacity-100 animate-pulse' : 'opacity-0'}`}
+        />
       )}
 
-      {children}
+      <div className="relative z-[1]">
+        {children}
+      </div>
 
       {/* Hover effect indicator dot */}
       {hoverable && (
-        <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+        <div className={`absolute top-2 right-2 transition-opacity z-10 pointer-events-none ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
           <div className={`rounded-full ${dotSize} ${dotClass}`} />
         </div>
       )}
