@@ -267,7 +267,7 @@ export const createContactTab = (contact = {}) => ({
       <h2 className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-gray-100 mb-6">
         Contact Information
       </h2>
-      <div className="grid grid-cols-2 gap-4 space-y-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 space-y-4">
         {contact.phone && (
           <a
             href={`tel:${contact.phone}`}
@@ -318,7 +318,7 @@ export const createSocialTab = (socialLinks = []) => ({
         <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-4">
           Follow us on social media:
         </p>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {socialLinks.map((social, index) => {
             const Icon = social.icon;
             return (

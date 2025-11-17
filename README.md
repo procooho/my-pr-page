@@ -19,6 +19,7 @@ Change Logs
     - Page is too long, utilized CollapsibleCard.
     - When the ComponentLink is clicked, automatically scroll down to that section, expand the CollapsibleCard.
 - Metadata added.
+- Mobile View Improved.
 
 ---
 

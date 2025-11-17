@@ -129,14 +129,14 @@ export const StatCard = ({
             <span className={`text-3xl font-bold ${valueClass}`}>
               {value || '-'}
             </span>
-            {unit && <span className="text-sm font-medium text-gray-500 dark:text-gray-400">{unit}</span>}
+            {unit && <span className="text-sm font-medium text-gray-500 dark:text-white">{unit}</span>}
           </div>
         </div>
 
         {/* Trend indicator */}
         <div className={`flex flex-col items-center justify-center`}>
           {!isEmpty && hasPreviousData && trend !== 'neutral' && (
-            <div className={`flex flex-col items-center justify-center gap-1 px-3 py-2 rounded-lg mr-2 border-3 ${isPositiveTrend ? ("border-green-500 bg-green-400/10") :("border-red-500 bg-red-400/10")}`}>
+            <div className={`w-20 h-20 flex flex-col items-center justify-center gap-1 px-3 py-2 rounded-lg mr-2 border-3 ${isPositiveTrend ? ("border-green-500 bg-green-400/10") :("border-red-500 bg-red-400/10")}`}>
               {isPositiveTrend ? (
                 <TrendingUp className="w-6 h-6 text-green-600 dark:text-green-500" strokeWidth={3} />
               ) : (
@@ -151,21 +151,21 @@ export const StatCard = ({
           )}
 
           {!isEmpty && hasPreviousData && trend === 'neutral' && (
-            <div className="flex flex-col items-center justify-center gap-1 px-3 py-2 rounded-lg mr-4">
+            <div className="w-20 h-20 flex flex-col items-center justify-center gap-1 px-3 py-2 rounded-lg mr-2 border-3 border-gray-500 bg-gray-400/10">
               <MinusIcon className="w-6 h-6 text-gray-600 dark:text-gray-400" strokeWidth={3} />
               <span className="text-lg font-bold text-gray-600 dark:text-gray-400 whitespace-nowrap">0%</span>
             </div>
           )}
 
           {!isEmpty && !hasPreviousData && (
-            <div className="flex flex-col items-center justify-center gap-1 px-3 py-2 rounded-lg mr-4">
+            <div className="w-20 h-20 flex flex-col items-center justify-center gap-1 px-3 py-2 rounded-lg mr-2 border-3 border-blue-500 bg-blue-400/10">
               <Info className="w-8 h-8 text-blue-500 dark:text-blue-400" />
               <span className="text-md font-bold text-blue-600 dark:text-blue-400 whitespace-nowrap">New</span>
             </div>
           )}
 
           {isEmpty && (
-            <div className="flex flex-col items-center justify-center gap-1 px-3 py-2 rounded-lg">
+            <div className="w-20 h-20 flex flex-col items-center justify-center gap-1 px-3 py-2 rounded-lg mr-2 border-3 border-amber-500 bg-amber-400/10">
               <div className="w-6 h-6 flex items-center justify-center">
                 <div className="w-2 h-2 bg-amber-500 rounded-full animate-pulse" />
               </div>

@@ -79,7 +79,7 @@ export function PageContainer({
   };
 
   return (
-    <div className={`${variantClasses[variant]} rounded-xl m-5 p-6 border border-gray-200 dark:border-gray-700 ${className}`}>
+    <div className={`${variantClasses[variant]} rounded-xl my-5 md:m-5 p-3 md:p-6 border border-gray-200 dark:border-gray-700 ${className}`}>
       {children}
     </div>
   );
