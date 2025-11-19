@@ -251,7 +251,7 @@ export default function ComponentShowcase() {
                       <ComponentLink
                         name="AnimatedIndividualCard.jsx"
                         description="Card with scale, rotation, and bounce animation"
-                        onClick={() => scrollToSection('animated-sport-card-section')}
+                        onClick={() => scrollToSection('animated-individual-card-section')}
                       />
                       <ComponentLink
                         name="InteractiveTabs.jsx"
@@ -708,7 +708,7 @@ const customTabs = [
           </section>
 
           {/* AnimatedIndividualCard Component */}
-          <section id="animated-sport-card-section">
+          <section id="animated-individual-card-section">
             <PageContainer>
               <PageHeader
                 title="AnimatedIndividualCard Component"

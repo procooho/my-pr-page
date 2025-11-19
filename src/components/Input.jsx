@@ -116,7 +116,7 @@ export function Input({
           focus:outline-none focus:ring-2
           ${variant === 'black' ? 'focus:ring-cyan-500 focus:border-cyan-400' : theme.focus}
           focus:border-transparent
-          ${disabled ? 'opacity-50 cursor-not-allowed' : ''}
+          ${disabled ? 'opacity-70 bg-gray-100 dark:bg-gray-900 bg-[repeating-linear-gradient(45deg,#e5e7eb,#e5e7eb_10px,#f3f4f6_10px,#f3f4f6_20px)] dark:bg-[repeating-linear-gradient(45deg,#1f1f1f,#1f1f1f_10px,#2a2a2a_10px,#2a2a2a_20px)] cursor-not-allowed' : ''}
           ${error ? 'border-red-400 dark:border-red-500 focus:ring-red-500' : ''}
         `}
       />

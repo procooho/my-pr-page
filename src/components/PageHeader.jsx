@@ -18,7 +18,7 @@ export function PageHeader({
   children,
 }) {
   const accentColorMap = {
-    blue: 'from-blue-500 to-blue-600 dark:from-cyan-500 dark:to-cyan-600',
+    blue: 'from-blue-500 to-blue-600 dark:from-blue-500 dark:to-blue-600',
     cyan: 'from-cyan-500 to-cyan-600',
     purple: 'from-purple-500 to-purple-600',
     green: 'from-green-500 to-green-600',
