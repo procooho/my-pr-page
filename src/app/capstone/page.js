@@ -14,7 +14,7 @@ export default function Page() {
       style={{ width: "100%", height: "auto" }}
     />
     <Image
-      src="/Capstone 1.png"
+      src="/Capstone 2.png"
       alt="Description 2"
       width={1200}
       height={800}
