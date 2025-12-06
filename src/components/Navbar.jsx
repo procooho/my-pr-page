@@ -142,6 +142,8 @@ export default function Navbar({ config, user = null, userRole = null, renderUse
   const navbarRef = useRef(null);
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const isScrollingRef = useRef(false);
+  const scrollTimeoutRef = useRef(null);
 
   const isAuthenticated = !!user;
   const { sections, theme: navTheme, behavior, logo } = config;
@@ -162,8 +164,39 @@ export default function Navbar({ config, user = null, userRole = null, renderUse
     }
   }, [behavior.breakpoint, behavior.desktopWidth]);
 
+  // Track scrolling to prevent navbar close during scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      isScrollingRef.current = true;
+
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+
+      scrollTimeoutRef.current = setTimeout(() => {
+        isScrollingRef.current = false;
+      }, 150);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    document.addEventListener("touchmove", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("touchmove", handleScroll);
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+    };
+  }, []);
+
   useEffect(() => {
     function handleClickOutside(event) {
+      // Don't close navbar if currently scrolling
+      if (isScrollingRef.current) {
+        return;
+      }
+
       if (
         navbarRef.current &&
         !navbarRef.current.contains(event.target) &&
