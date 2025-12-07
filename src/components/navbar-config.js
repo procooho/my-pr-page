@@ -88,7 +88,7 @@ export const defaultNavbarConfig = {
           links: [
             { label: 'Resume (MS Word)', href: '/Soomin Park - Resume 2025.docx', download: true },
             { label: 'Cover Letter (MS Word)', href: '/Soomin Park - Cover Letter 2025.docx', download: true },
-            { label: 'Combined Document (PDF)', href: '/Soomin Park Resume Portfolio 2025.pdf', download: true },
+            { label: 'Combined Document (PDF)', href: '/Soomin Park Resume Portfolio - 2025.pdf', download: true },
           ]
         }
       ],
