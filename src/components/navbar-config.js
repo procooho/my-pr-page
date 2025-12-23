@@ -119,6 +119,14 @@ export const defaultNavbarConfig = {
             { label: 'Description', href: '/guild-item-level-tracker' },
           ],
         },
+        {
+          label: 'Sopoong Website',
+          icon: Presentation,
+          links: [
+            { label: 'LINK - Sopoong', href: 'https://so-poong.ca/' },
+            { label: 'Description', href: '/sopoong' },
+          ],
+        },
       ],
     },
     {
@@ -129,6 +137,7 @@ export const defaultNavbarConfig = {
           label: 'Capstone Project (NAIT)',
           icon: Presentation,
           links: [
+            { label: 'LINK - ProAthleteMetrics', href: 'https://www.proathletemetrics.com/' },
             { label: 'Description', href: '/capstone' },
           ],
         },
