@@ -10,6 +10,7 @@ import {
   FileText,
   Mail,
   MessageCircleMore,
+  Link,
 } from "lucide-react";
 
 // ============================================
@@ -82,6 +83,7 @@ export const defaultNavbarConfig = {
       items: [
         { label: 'About Me!', href: '/', icon: CircleQuestionMark },
         { label: 'Contact Me!', href: '/contact', icon: Mail },
+        { label: 'LINK - LinkedIn', href: 'https://www.linkedin.com/in/soomin-park-030500277/', icon: Link },
         {
           label: 'Download Resume',
           icon: LayoutList,
