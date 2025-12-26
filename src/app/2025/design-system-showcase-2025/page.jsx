@@ -37,7 +37,13 @@ import {
   Heart,
   Play,
   Dot,
-  Check
+  Check,
+  Menu,
+  ChevronLeft,
+  ChevronRight,
+  Home,
+  Settings,
+  FileText
 } from 'lucide-react';
 
 export default function ComponentShowcase() {
@@ -228,6 +234,20 @@ export default function ComponentShowcase() {
 
               {/* Component Categories */}
               <div className="grid grid-cols-1 gap-6 my-6">
+                {/* Navigation Components */}
+                <Card variant="gradient">
+                  <CardHeader title="Navigation Components" />
+                  <CardContent>
+                    <div className="space-y-2.5">
+                      <ComponentLink
+                        name="Navbar.jsx"
+                        description="Collapsible sidebar with sections, dropdowns, and theme toggle"
+                        onClick={() => scrollToSection('navbar-section')}
+                      />
+                    </div>
+                  </CardContent>
+                </Card>
+
                 {/* Animation Components */}
                 <Card variant="gradient">
                   <CardHeader title="Animation Components" />
@@ -268,6 +288,7 @@ export default function ComponentShowcase() {
                 <CardHeader title="Implementation Guidelines" />
                 <CardContent>
                   <div className="space-y-2">
+                    <Guideline text="Navbar uses a config object with sections, theme, behavior, and logo settings" />
                     <Guideline text="FeatureShowcase supports 4 layouts (1-4 columns) and 8 color variants" />
                     <Guideline text="InteractiveCardGrid requires exactly 4 items for proper 2x2 layout" />
                     <Guideline text="AnimatedServiceCard needs hover state management (isHovered, onHover, onLeave)" />
@@ -276,6 +297,423 @@ export default function ComponentShowcase() {
                     <Guideline text="All components support multiple color variants (blue, purple, green, etc.)" />
                     <Guideline text="Use PageContainer for consistent page backgrounds" />
                     <Guideline text="Combine components with Card, CardHeader, CardContent for layouts" />
+                  </div>
+                </CardContent>
+              </Card>
+            </PageContainer>
+          </section>
+
+          {/* Navbar Component */}
+          <section id="navbar-section">
+            <PageContainer>
+              <PageHeader
+                title="Navbar Component"
+                subtitle="Collapsible sidebar navigation with configuration-driven design"
+                accentColor="blue"
+              />
+              <Card variant="default">
+                <CardHeader title="Features & Capabilities" />
+                <CardContent>
+                  <div className="space-y-2">
+                    <Feature text="Collapsible sidebar with smooth slide animation" />
+                    <Feature text="Configuration-driven: sections, theme, behavior, and logo all customizable" />
+                    <Feature text="Supports both direct links and dropdown menus with nested links" />
+                    <Feature text="Role-based access control (requiresAuth, requiresRole)" />
+                    <Feature text="Built-in dark/light theme toggle with animated icons" />
+                    <Feature text="Responsive: auto-closes on mobile, shows overlay backdrop" />
+                    <Feature text="Click outside to close on mobile devices" />
+                    <Feature text="Scroll-aware: prevents accidental close during scrolling" />
+                    <Feature text="Customizable toggle button position and visibility" />
+                    <Feature text="Section color gradients (blue, purple, green, red, yellow)" />
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Visual Example */}
+              <div className="my-5">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                  Visual Example
+                </h3>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  {/* Navbar Mockup */}
+                  <Card variant="gradient">
+                    <CardHeader title="Sample Navbar Layout" />
+                    <CardContent>
+                      <div className="bg-gradient-to-b from-gray-200 via-gray-200 to-gray-200 dark:from-gray-800 dark:via-gray-900 dark:to-gray-950 rounded-xl border-2 border-gray-200 dark:border-gray-700 p-4 shadow-lg">
+                        {/* Logo Area */}
+                        <div className="bg-gradient-to-br from-blue-900/30 to-blue-800/40 dark:from-gray-900 dark:to-gray-800 rounded-xl p-4 mb-4 border-2 border-blue-200 dark:border-gray-700">
+                          <div className="h-12 bg-blue-100 dark:bg-gray-700 rounded-lg flex items-center justify-center">
+                            <span className="text-sm font-bold text-blue-600 dark:text-blue-400">LOGO</span>
+                          </div>
+                        </div>
+
+                        {/* Section: Main Menu */}
+                        <div className="mb-4">
+                          <div className="flex items-center gap-2 px-2 pb-2">
+                            <div className="h-0.5 bg-gradient-to-r from-transparent via-blue-500 to-transparent flex-1" />
+                            <span className="text-xs tracking-widest text-gray-700 dark:text-gray-100 uppercase font-bold">Main Menu</span>
+                            <div className="h-0.5 bg-gradient-to-r from-transparent via-blue-500 to-transparent flex-1" />
+                          </div>
+                          <div className="space-y-1">
+                            <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl hover:bg-blue-100 dark:hover:bg-blue-900/30 cursor-pointer transition-colors">
+                              <Home className="w-4 h-4 text-gray-700 dark:text-gray-100" />
+                              <span className="text-sm font-semibold text-gray-700 dark:text-gray-100">Home</span>
+                            </div>
+                            <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl hover:bg-blue-100 dark:hover:bg-blue-900/30 cursor-pointer transition-colors">
+                              <Users className="w-4 h-4 text-gray-700 dark:text-gray-100" />
+                              <span className="text-sm font-semibold text-gray-700 dark:text-gray-100">About</span>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Section: Resources */}
+                        <div className="mb-4">
+                          <div className="flex items-center gap-2 px-2 pb-2">
+                            <div className="h-0.5 bg-gradient-to-r from-transparent via-purple-500 to-transparent flex-1" />
+                            <span className="text-xs tracking-widest text-gray-700 dark:text-gray-100 uppercase font-bold">Resources</span>
+                            <div className="h-0.5 bg-gradient-to-r from-transparent via-purple-500 to-transparent flex-1" />
+                          </div>
+                          <div className="space-y-1">
+                            <div className="flex items-center justify-between px-4 py-2.5 rounded-xl hover:bg-purple-100 dark:hover:bg-purple-900/30 cursor-pointer transition-colors">
+                              <div className="flex items-center gap-3">
+                                <FileText className="w-4 h-4 text-gray-700 dark:text-gray-100" />
+                                <span className="text-sm font-semibold text-gray-700 dark:text-gray-100">Documents</span>
+                              </div>
+                              <ChevronRight className="w-4 h-4 text-gray-500 rotate-90" />
+                            </div>
+                            <div className="ml-6 pl-3 border-l-2 border-purple-300 dark:border-purple-800 space-y-1">
+                              <div className="px-3 py-1.5 text-sm text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 cursor-pointer">Guide</div>
+                              <div className="px-3 py-1.5 text-sm text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 cursor-pointer">API Reference</div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Theme Toggle */}
+                        <div className="pt-4 border-t-2 border-gray-200 dark:border-gray-800">
+                          <div className="flex justify-center">
+                            <div className="rounded-xl bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-900 border-2 border-gray-200 dark:border-gray-700 p-2.5 shadow-md">
+                              <Heart className="w-5 h-5 text-blue-600 dark:text-yellow-500" />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* Toggle Button Example */}
+                  <Card variant="gradient">
+                    <CardHeader title="Toggle Button States" />
+                    <CardContent>
+                      <div className="space-y-6">
+                        <div>
+                          <p className="text-sm font-semibold text-gray-800 dark:text-gray-200 mb-3">Collapsed State (Pulsing)</p>
+                          <div className="flex items-center gap-4">
+                            <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm border-2 border-blue-300 dark:border-blue-600 rounded-lg p-2 shadow-md animate-pulse">
+                              <ChevronRight className="h-4 w-4 text-gray-700 dark:text-gray-300" />
+                            </div>
+                            <span className="text-sm text-gray-600 dark:text-gray-400">Click to expand navbar</span>
+                          </div>
+                        </div>
+                        <div>
+                          <p className="text-sm font-semibold text-gray-800 dark:text-gray-200 mb-3">Expanded State</p>
+                          <div className="flex items-center gap-4">
+                            <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm border-2 border-gray-300 dark:border-gray-600 rounded-lg p-2 shadow-md hover:border-blue-300 hover:dark:border-blue-600 transition-colors">
+                              <ChevronLeft className="h-4 w-4 text-gray-700 dark:text-gray-300" />
+                            </div>
+                            <span className="text-sm text-gray-600 dark:text-gray-400">Click to collapse navbar</span>
+                          </div>
+                        </div>
+                        <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
+                          <p className="text-sm text-gray-600 dark:text-gray-400">
+                            The toggle button is fixed position and follows the navbar edge. It provides visual feedback with pulse animation when collapsed.
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
+
+              {/* Architecture Overview */}
+              <div className="my-5">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                  Architecture Overview
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <Card variant="gradient">
+                    <CardHeader title="Navbar.jsx" />
+                    <CardContent>
+                      <p className="text-gray-700 dark:text-gray-300 mb-3">
+                        The main component that renders the sidebar, toggle button, and mobile overlay.
+                      </p>
+                      <div className="space-y-1">
+                        <p className="text-sm text-gray-600 dark:text-gray-400 flex items-center gap-2">
+                          <Menu className="w-4 h-4 text-blue-500" />
+                          NavLinkItem - Renders individual navigation links
+                        </p>
+                        <p className="text-sm text-gray-600 dark:text-gray-400 flex items-center gap-2">
+                          <ChevronRight className="w-4 h-4 text-blue-500" />
+                          NavDropdownItem - Renders expandable dropdown menus
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                  <Card variant="gradient">
+                    <CardHeader title="navbar-config.js" />
+                    <CardContent>
+                      <p className="text-gray-700 dark:text-gray-300 mb-3">
+                        Configuration file with default theme, behavior, and navigation structure.
+                      </p>
+                      <div className="space-y-1">
+                        <p className="text-sm text-gray-600 dark:text-gray-400 flex items-center gap-2">
+                          <Settings className="w-4 h-4 text-purple-500" />
+                          defaultNavbarTheme - Colors and gradients
+                        </p>
+                        <p className="text-sm text-gray-600 dark:text-gray-400 flex items-center gap-2">
+                          <Settings className="w-4 h-4 text-purple-500" />
+                          defaultNavbarBehavior - Width, breakpoints, toggles
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
+
+              {/* Configuration Structure */}
+              <div className="my-8">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                  Configuration Structure
+                </h3>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  {/* Theme Config */}
+                  <Card variant="default">
+                    <CardHeader title="Theme Configuration" />
+                    <CardContent>
+                      <div className="space-y-3">
+                        <div>
+                          <p className="text-sm font-semibold text-gray-800 dark:text-gray-200">Background Gradients</p>
+                          <p className="text-xs text-gray-600 dark:text-gray-400">lightBackground, darkBackground</p>
+                        </div>
+                        <div>
+                          <p className="text-sm font-semibold text-gray-800 dark:text-gray-200">Border Colors</p>
+                          <p className="text-xs text-gray-600 dark:text-gray-400">borderLight, borderDark</p>
+                        </div>
+                        <div>
+                          <p className="text-sm font-semibold text-gray-800 dark:text-gray-200">Section Colors</p>
+                          <p className="text-xs text-gray-600 dark:text-gray-400">blue, purple, yellow, green, red</p>
+                        </div>
+                        <div>
+                          <p className="text-sm font-semibold text-gray-800 dark:text-gray-200">Logo Styling</p>
+                          <p className="text-xs text-gray-600 dark:text-gray-400">logoBackground, logoBorder</p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* Behavior Config */}
+                  <Card variant="default">
+                    <CardHeader title="Behavior Configuration" />
+                    <CardContent>
+                      <div className="space-y-3">
+                        <div>
+                          <p className="text-sm font-semibold text-gray-800 dark:text-gray-200">desktopWidth</p>
+                          <p className="text-xs text-gray-600 dark:text-gray-400">Sidebar width (default: &quot;320px&quot;)</p>
+                        </div>
+                        <div>
+                          <p className="text-sm font-semibold text-gray-800 dark:text-gray-200">breakpoint</p>
+                          <p className="text-xs text-gray-600 dark:text-gray-400">Mobile breakpoint in px (default: 1024)</p>
+                        </div>
+                        <div>
+                          <p className="text-sm font-semibold text-gray-800 dark:text-gray-200">closeOnNavigate</p>
+                          <p className="text-xs text-gray-600 dark:text-gray-400">Auto-close on mobile after navigation</p>
+                        </div>
+                        <div>
+                          <p className="text-sm font-semibold text-gray-800 dark:text-gray-200">showMobileOverlay</p>
+                          <p className="text-xs text-gray-600 dark:text-gray-400">Show backdrop overlay on mobile</p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
+
+              {/* Navigation Items */}
+              <div className="my-8">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                  Navigation Item Types
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Direct Link */}
+                  <Card variant="gradient">
+                    <CardHeader title="Direct Link" />
+                    <CardContent>
+                      <div className="bg-gray-100 dark:bg-gray-800 rounded-xl p-4 mb-3">
+                        <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white dark:bg-gray-700">
+                          <Home className="w-5 h-5 text-blue-600" />
+                          <span className="text-sm font-semibold text-gray-700 dark:text-gray-100">Home</span>
+                        </div>
+                      </div>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">
+                        Simple navigation link with icon. Supports internal routes, external URLs, and downloadable files.
+                      </p>
+                    </CardContent>
+                  </Card>
+
+                  {/* Dropdown */}
+                  <Card variant="gradient">
+                    <CardHeader title="Dropdown Menu" />
+                    <CardContent>
+                      <div className="bg-gray-100 dark:bg-gray-800 rounded-xl p-4 mb-3">
+                        <div className="flex items-center justify-between px-4 py-3 rounded-xl bg-white dark:bg-gray-700">
+                          <div className="flex items-center gap-3">
+                            <FileText className="w-5 h-5 text-purple-600" />
+                            <span className="text-sm font-semibold text-gray-700 dark:text-gray-100">Documents</span>
+                          </div>
+                          <ChevronRight className="w-5 h-5 text-gray-500 rotate-90" />
+                        </div>
+                        <div className="ml-6 mt-2 pl-4 border-l-2 border-purple-300 dark:border-purple-800 space-y-1">
+                          <div className="px-3 py-2 text-sm text-gray-600 dark:text-gray-300">Resume</div>
+                          <div className="px-3 py-2 text-sm text-gray-600 dark:text-gray-300">Cover Letter</div>
+                        </div>
+                      </div>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">
+                        Expandable menu with nested links. Animates open/closed with smooth transitions.
+                      </p>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
+
+              {/* Code Examples */}
+              <Card variant="default">
+                <CardHeader title="Basic Usage" />
+                <CardContent>
+                  <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
+                    {`import Navbar from '@/components/Navbar';
+import { defaultNavbarConfig } from '@/components/navbar-config';
+
+// In your layout.jsx
+export default function RootLayout({ children }) {
+  return (
+    <html>
+      <body>
+        <Navbar config={defaultNavbarConfig} />
+        <main className="transition-all duration-300"
+              style={{ marginLeft: 'var(--navbar-width, 0px)' }}>
+          {children}
+        </main>
+      </body>
+    </html>
+  );
+}`}
+                  </pre>
+                </CardContent>
+              </Card>
+
+              <Card variant="default" className="mt-5">
+                <CardHeader title="Custom Configuration" />
+                <CardContent>
+                  <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
+                    {`import { Home, Mail, FileText, Users } from 'lucide-react';
+import { defaultNavbarTheme, defaultNavbarBehavior } from '@/components/navbar-config';
+
+const customConfig = {
+  logo: {
+    src: "/my-logo.png",
+    alt: "My App",
+    linkTo: "/",
+  },
+  theme: {
+    ...defaultNavbarTheme,
+    // Override specific theme values
+  },
+  behavior: {
+    ...defaultNavbarBehavior,
+    desktopWidth: "280px",
+    breakpoint: 768,
+  },
+  sections: [
+    {
+      title: "Main Menu",
+      gradientColor: "blue",        // blue, purple, green, red, yellow
+      items: [
+        // Direct link
+        { label: "Home", href: "/", icon: Home },
+        { label: "Contact", href: "/contact", icon: Mail },
+        // External link
+        { label: "GitHub", href: "https://github.com", icon: Users },
+        // Dropdown menu
+        {
+          label: "Documents",
+          icon: FileText,
+          links: [
+            { label: "Resume (PDF)", href: "/resume.pdf", download: true },
+            { label: "Portfolio", href: "/portfolio" },
+          ],
+        },
+      ],
+    },
+    {
+      title: "Admin",
+      gradientColor: "purple",
+      requiresAuth: true,           // Only show when authenticated
+      requiresRole: ["Admin"],      // Only show for specific roles
+      items: [
+        { label: "Dashboard", href: "/admin", icon: Users },
+      ],
+    },
+  ],
+};
+
+<Navbar
+  config={customConfig}
+  user={currentUser}              // Optional: for auth-based sections
+  userRole={userRole}             // Optional: for role-based sections
+/>`}
+                  </pre>
+                </CardContent>
+              </Card>
+
+              <Card variant="default" className="mt-5">
+                <CardHeader title="Props Reference" />
+                <CardContent>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-sm">
+                      <thead>
+                        <tr className="border-b border-gray-200 dark:border-gray-700">
+                          <th className="text-left py-2 px-3 font-semibold text-gray-800 dark:text-gray-200">Prop</th>
+                          <th className="text-left py-2 px-3 font-semibold text-gray-800 dark:text-gray-200">Type</th>
+                          <th className="text-left py-2 px-3 font-semibold text-gray-800 dark:text-gray-200">Description</th>
+                        </tr>
+                      </thead>
+                      <tbody className="text-gray-600 dark:text-gray-400">
+                        <tr className="border-b border-gray-100 dark:border-gray-800">
+                          <td className="py-2 px-3 font-mono text-blue-600 dark:text-blue-400">config</td>
+                          <td className="py-2 px-3">Object</td>
+                          <td className="py-2 px-3">Required. Contains sections, theme, behavior, and logo</td>
+                        </tr>
+                        <tr className="border-b border-gray-100 dark:border-gray-800">
+                          <td className="py-2 px-3 font-mono text-blue-600 dark:text-blue-400">user</td>
+                          <td className="py-2 px-3">Object | null</td>
+                          <td className="py-2 px-3">Current user object for auth-based visibility</td>
+                        </tr>
+                        <tr className="border-b border-gray-100 dark:border-gray-800">
+                          <td className="py-2 px-3 font-mono text-blue-600 dark:text-blue-400">userRole</td>
+                          <td className="py-2 px-3">String | null</td>
+                          <td className="py-2 px-3">User role for role-based section visibility</td>
+                        </tr>
+                        <tr className="border-b border-gray-100 dark:border-gray-800">
+                          <td className="py-2 px-3 font-mono text-blue-600 dark:text-blue-400">renderUserButton</td>
+                          <td className="py-2 px-3">Function</td>
+                          <td className="py-2 px-3">Custom render function for authenticated user button</td>
+                        </tr>
+                        <tr>
+                          <td className="py-2 px-3 font-mono text-blue-600 dark:text-blue-400">renderSignInButton</td>
+                          <td className="py-2 px-3">Function</td>
+                          <td className="py-2 px-3">Custom render function for sign-in button</td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
                 </CardContent>
               </Card>
