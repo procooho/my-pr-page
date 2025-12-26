@@ -116,7 +116,7 @@ export default function Footer() {
                             </div>
                             <div>
                                 <span className="block text-gray-800 mb-1">LAST UPDATE</span>
-                                <span className="text-gray-400">2025</span>
+                                <span className="text-gray-400">Dec. 2025</span>
                             </div>
                             <div>
                                 <span className="block text-gray-800 mb-1">FRAMEWORK</span>

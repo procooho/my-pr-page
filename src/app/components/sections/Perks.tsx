@@ -39,21 +39,21 @@ export default function Perks() {
             </div>
 
             {/* Curved Connector Line (Desktop) */}
-            <div className="absolute inset-0 pointer-events-none z-0 hidden md:block opacity-30">
+            <div className="absolute inset-0 pointer-events-none z-0 opacity-30">
                 <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
                     <motion.path
                         d="M 50 0 C 50 10, 10 30, 20 60 C 30 90, 90 90, 50 100"
                         fill="none"
                         vectorEffect="non-scaling-stroke"
-                        stroke="rgba(255, 215, 0, 0.3)"
-                        strokeWidth="1"
+                        stroke="rgba(255, 217, 0, 0.14)"
+                        strokeWidth="20"
                     />
                     <motion.path
                         d="M 50 0 C 50 10, 10 30, 20 60 C 30 90, 90 90, 50 100"
                         fill="none"
                         vectorEffect="non-scaling-stroke"
                         stroke="#FFD700"
-                        strokeWidth="1.5"
+                        strokeWidth="2"
                         strokeDasharray="5 10"
                         strokeLinecap="round"
                         initial={{ strokeDashoffset: 0 }}
@@ -64,17 +64,7 @@ export default function Perks() {
                 </svg>
             </div>
 
-            {/* Straight Line (Mobile Fallback) */}
-            <div className="absolute left-6 top-0 bottom-0 w-[1px] bg-yellow-400/20 z-0 md:hidden">
-                <div className="absolute top-0 left-0 w-full h-full bg-yellow-400/50"
-                    style={{
-                        background: 'repeating-linear-gradient(to bottom, transparent 0px, transparent 10px, #FFD700 10px, #FFD700 20px)',
-                        animation: 'scan 20s linear infinite'
-                    }}
-                />
-            </div>
-
-            <div className="max-w-7xl mx-auto relative z-10 flex flex-col gap-24 pl-6 md:pl-0">
+            <div className="max-w-7xl mx-auto relative z-10 flex flex-col gap-24 pl-0">
 
                 {/* Section Header */}
                 <motion.div

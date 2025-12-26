@@ -60,10 +60,10 @@ export default function Navbar() {
 
                 {/* Mobile Logo */}
                 <div className="lg:hidden flex items-center gap-2 m-auto">
-                    <div className="relative group">
+                    <div className="relative group" onClick={() => handleNavigation('hero')}>
                         <div className="absolute inset-0 bg-yellow-400/10 blur-md rounded-full opacity-50" />
                         <div className="relative border border-white/10 bg-black/80 px-3 py-2.5 rounded flex items-center gap-2 backdrop-blur-md shadow-xl">
-                            <div className="relative w-35 h-9 overflow-hidden flex items-center justify-center">
+                            <div className="relative w-35 h-9 overflow-hidden flex items-center justify-center" >
                                 <AnimatePresence mode="wait">
                                     <motion.img
                                         key={logoIndex}
@@ -98,8 +98,8 @@ export default function Navbar() {
                 </div>
 
                 {/* Desktop Center Logo */}
-                <div className="hidden lg:flex items-center gap-3 px-8 mx-8">
-                    <div className="relative group cursor-default">
+                <div className="hidden lg:flex items-center gap-3 px-8 mx-8" onClick={() => handleNavigation('hero')}>
+                    <div className="relative group">
                         <div className="absolute inset-0 bg-yellow-400/10 blur-xl rounded-full opacity-50 group-hover:opacity-100 transition-opacity" />
                         <div className="relative border border-white/10 bg-black/80 px-4 py-2 rounded flex items-center gap-3 backdrop-blur-md shadow-2xl">
                             {/* Logo Carousel */}
@@ -117,7 +117,6 @@ export default function Navbar() {
                                     />
                                 </AnimatePresence>
                             </div>
-
                             <div className="w-2 h-2 rounded-full bg-yellow-400 animate-pulse shadow-[0_0_10px_#FFD700]" />
                         </div>
                         {/* Corner Accents */}
