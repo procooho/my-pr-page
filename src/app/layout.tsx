@@ -25,6 +25,9 @@ const mono = JetBrains_Mono({
 export const metadata = {
     title: 'Soomin Park | Strategist & Developer',
     description: 'Turning brilliant ideas into engineered reality.',
+    icons: {
+        icon: '/logo.png',
+    },
 };
 
 export default function RootLayout({
