@@ -203,21 +203,31 @@ export default function ComponentShowcase() {
   ];
 
   return (
-    <main className="min-h-screen bg-gray-50 dark:bg-gray-900 p-3">
-      <div className="mx-auto space-y-8">
-        <PageContainer>
-          <PageHeader
-            title="Custom Design System Library 2025 - Soomin Park"
-            subtitle="Complete component library and usage examples"
-            accentColor="blue"
-          />
+    <main className="min-h-screen bg-[#050505] text-gray-300 p-3 pt-40 relative overflow-hidden font-sans">
+      {/* Background Grid & Effects */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#222_1px,transparent_1px),linear-gradient(to_bottom,#222_1px,transparent_1px)] bg-[size:40px_40px] opacity-20" />
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-yellow-400/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-500/5 rounded-full blur-3xl pointer-events-none" />
+      </div>
+
+      <div className="mx-auto space-y-8 relative z-10">
+
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="mb-12 border-l-4 border-yellow-400 pl-6 py-2">
+            <h1 className="text-4xl md:text-5xl font-chakra font-bold text-white tracking-tight uppercase mb-2">
+              Design System // 2025
+            </h1>
+            <p className="font-mono text-sm text-yellow-400/80 tracking-widest uppercase">
+              // Component Library // Usage Examples
+            </p>
+          </div>
           {/* Overview Section */}
           <section>
-            <PageContainer>
-              <PageHeader
-                title="Overview"
-                accentColor="blue"
-              />
+            <div className="max-w-7xl mx-auto w-full">
+              <div className="mb-8 border-l-2 border-yellow-400/50 pl-4">
+                <h2 className="text-2xl font-chakra font-bold text-white uppercase">Overview</h2>
+              </div>
               <Card variant="gradient">
                 <CardHeader title="About This Design System" />
                 <CardContent>
@@ -300,17 +310,16 @@ export default function ComponentShowcase() {
                   </div>
                 </CardContent>
               </Card>
-            </PageContainer>
+            </div>
           </section>
 
           {/* Navbar Component */}
           <section id="navbar-section">
-            <PageContainer>
-              <PageHeader
-                title="Navbar Component"
-                subtitle="Collapsible sidebar navigation with configuration-driven design"
-                accentColor="blue"
-              />
+            <div className="max-w-7xl mx-auto w-full">
+              <div className="mb-8 border-l-2 border-yellow-400/50 pl-4">
+                <h2 className="text-2xl font-chakra font-bold text-white uppercase">Navbar Component</h2>
+                <p className="mt-1 text-gray-400 font-mono text-xs">// Collapsible sidebar navigation with configuration-driven design</p>
+              </div>
               <Card variant="default">
                 <CardHeader title="Features & Capabilities" />
                 <CardContent>
@@ -717,17 +726,16 @@ const customConfig = {
                   </div>
                 </CardContent>
               </Card>
-            </PageContainer>
+            </div>
           </section>
 
           {/* FeatureShowcase Component */}
           <section id="feature-showcase-section">
-            <PageContainer>
-              <PageHeader
-                title="FeatureShowcase Component"
-                subtitle="Auto-rotating carousel with customizable layouts"
-                accentColor="purple"
-              />
+            <div className="max-w-7xl mx-auto w-full">
+              <div className="mb-8 border-l-2 border-yellow-400/50 pl-4">
+                <h2 className="text-2xl font-chakra font-bold text-white uppercase">FeatureShowcase Component</h2>
+                <p className="mt-1 text-gray-400 font-mono text-xs">// Auto-rotating carousel with customizable layouts</p>
+              </div>
               <Card variant="default">
                 <CardHeader title="Features & Capabilities" />
                 <CardContent>
@@ -847,17 +855,16 @@ const features = [
                   </pre>
                 </CardContent>
               </Card>
-            </PageContainer>
+            </div>
           </section>
 
           {/* InteractiveCardGrid Showcase */}
           <section id="interactive-grid-section">
-            <PageContainer>
-              <PageHeader
-                title="InteractiveCardGrid Component"
-                subtitle="2x2 grid with vertical push animation"
-                accentColor="blue"
-              />
+            <div className="max-w-7xl mx-auto w-full">
+              <div className="mb-8 border-l-2 border-yellow-400/50 pl-4">
+                <h2 className="text-2xl font-chakra font-bold text-white uppercase">InteractiveCardGrid Component</h2>
+                <p className="mt-1 text-gray-400 font-mono text-xs">// 2x2 grid with vertical push animation</p>
+              </div>
               <Card variant="default">
                 <CardHeader title="Features & Capabilities" />
                 <CardContent>
@@ -938,17 +945,16 @@ const items = [
                   </pre>
                 </CardContent>
               </Card>
-            </PageContainer>
+            </div>
           </section>
 
           {/* AnimatedServiceCard Component */}
           <section id="animated-service-card-section">
-            <PageContainer>
-              <PageHeader
-                title="AnimatedServiceCard Component"
-                subtitle="Individual card with hover animations"
-                accentColor="blue"
-              />
+            <div className="max-w-7xl mx-auto w-full">
+              <div className="mb-8 border-l-2 border-yellow-400/50 pl-4">
+                <h2 className="text-2xl font-chakra font-bold text-white uppercase">AnimatedServiceCard Component</h2>
+                <p className="mt-1 text-gray-400 font-mono text-xs">// Individual card with hover animations</p>
+              </div>
               <Card variant="default">
                 <CardHeader title="Features & Capabilities" />
                 <CardContent>
@@ -1003,17 +1009,16 @@ const items = [
                   </pre>
                 </CardContent>
               </Card>
-            </PageContainer>
+            </div>
           </section>
 
           {/* InteractiveTabs Component */}
           <section id="interactive-tabs-section">
-            <PageContainer>
-              <PageHeader
-                title="Interactive Tabs Component"
-                subtitle="Tabbed interface with hover activated content"
-                accentColor="green"
-              />
+            <div className="max-w-7xl mx-auto w-full">
+              <div className="mb-8 border-l-2 border-yellow-400/50 pl-4">
+                <h2 className="text-2xl font-chakra font-bold text-white uppercase">Interactive Tabs Component</h2>
+                <p className="mt-1 text-gray-400 font-mono text-xs">// Tabbed interface with hover activated content</p>
+              </div>
               <Card variant="default">
                 <CardHeader title="Features & Capabilities" />
                 <CardContent>
@@ -1142,17 +1147,16 @@ const customTabs = [
                   </pre>
                 </CardContent>
               </Card>
-            </PageContainer>
+            </div>
           </section>
 
           {/* AnimatedIndividualCard Component */}
           <section id="animated-individual-card-section">
-            <PageContainer>
-              <PageHeader
-                title="AnimatedIndividualCard Component"
-                subtitle="Card with scale, rotation, and bounce"
-                accentColor="purple"
-              />
+            <div className="max-w-7xl mx-auto w-full">
+              <div className="mb-8 border-l-2 border-yellow-400/50 pl-4">
+                <h2 className="text-2xl font-chakra font-bold text-white uppercase">AnimatedIndividualCard Component</h2>
+                <p className="mt-1 text-gray-400 font-mono text-xs">// Card with scale, rotation, and bounce</p>
+              </div>
               <Card variant="default">
                 <CardHeader title="Features & Capabilities" />
                 <CardContent>
@@ -1197,11 +1201,11 @@ const customTabs = [
                   </pre>
                 </CardContent>
               </Card>
-            </PageContainer>
+            </div>
           </section>
-        </PageContainer>
+        </div>
       </div>
-    </main>
+    </main >
   );
 }
 
@@ -1209,9 +1213,9 @@ const customTabs = [
 const ComponentLink = ({ name, description, onClick }) => (
   <div className="flex items-center gap-3">
     <Dot className="text-gray-500 dark:text-gray-400 font-mono text-xs" />
-    <p className="text-md text-gray-700 dark:text-gray-300">
+    <p className="text-md text-gray-300">
       <strong
-        className="font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 cursor-pointer underline decoration-2 underline-offset-2"
+        className="font-semibold text-blue-400 hover:text-blue-300 cursor-pointer underline decoration-2 underline-offset-2"
         onClick={onClick}
       >
         {name}
@@ -1222,14 +1226,14 @@ const ComponentLink = ({ name, description, onClick }) => (
 );
 
 const Guideline = ({ text }) => (
-  <p className="text-lg text-gray-700 dark:text-gray-300 my-1 flex items-center gap-3">
+  <p className="text-lg text-gray-300 my-1 flex items-center gap-3">
     <Play className="text-blue-500" />
     {text}
   </p>
 );
 
 const Feature = ({ text }) => (
-  <p className="text-base text-gray-700 dark:text-gray-300 flex items-center gap-3">
+  <p className="text-base text-gray-300 flex items-center gap-3">
     <Check className="text-green-500" />
     {text}
   </p>
