@@ -52,7 +52,7 @@ const projects = [
         title: "WoW Guild Manager",
         subtitle: "PERSONAL PROJECT",
         role: "SOLO DEV",
-        period: "AUG 2025",
+        period: "AUG 2025 (Redesigned in DEC 2025)",
         url: "https://wow-guild-raid-ilvl.vercel.app/",
         image: "/Guild Item Level Tracker.png",
         tech: ["React", "MUI", "Blizzard API", "OAuth 2.0", "Prisma"],
