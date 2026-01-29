@@ -151,7 +151,7 @@ export default function Hero() {
                             <div className="flex flex-col md:flex-row items-start md:items-center gap-2 mt-2 pt-2 md:mt-4 md:pt-4 border-t border-white/5">
                                 <div className="w-full md:w-auto px-2 md:px-3 py-1 md:py-1.5 rounded bg-white/5 border border-white/10 flex items-center justify-center md:justify-start gap-2 text-[9px] md:text-[10px] text-gray-300 font-mono tracking-widest uppercase transition-colors group-hover:border-yellow-400/30 group-hover:bg-yellow-400/5">
                                     <div className="w-1.5 h-1.5 rounded-full bg-gray-500 group-hover:bg-yellow-400 transition-colors" />
-                                    FULL STACK DEVELOPER & ARCHITECT
+                                    FULL STACK DEVELOPER & SYS. ARCHITECT
                                 </div>
                                 <div className="w-full md:w-auto px-2 md:px-3 py-1 md:py-1.5 rounded bg-white/5 border border-white/10 flex items-center justify-center md:justify-start gap-2 text-[9px] md:text-[10px] text-gray-300 font-mono tracking-widest uppercase transition-colors group-hover:border-yellow-400/30 group-hover:bg-yellow-400/5">
                                     <div className="w-1.5 h-1.5 rounded-full bg-gray-500 group-hover:bg-yellow-400 transition-colors" />
