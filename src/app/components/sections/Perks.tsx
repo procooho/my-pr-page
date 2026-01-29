@@ -200,7 +200,7 @@ export default function Perks() {
                         {[
                             { role: "Store Manager", company: "Sopoong Korean Street Food | Sherwood Park, AB", date: "Sep 2024 - Present" },
                             { role: "CSD Diploma", company: "NAIT | 4.0 / 4.0 GPA | Edmonton, AB", date: "Sep 2023 - Dec 2025" },
-                            { role: "Professional Truck Driver", company: "Logistics Sector (Various) | Canada, USA", date: "2018 - 2023" },
+                            { role: "Professional Truck Driver", company: "Logistics Sector (Various) | Canada & USA", date: "2018 - 2023" },
                             { role: "Technician / Team Lead", company: "City Truck Stop | Edmonton, AB", date: "2014 - 2018" },
                             { role: "Interior Designer", company: "Jawoo Sonic | South Korea", date: "2013 - 2014" },
                             { role: "Academy Instructor", company: "HnJ Academy | South Korea", date: "2012 - 2013" },
