@@ -45,7 +45,7 @@ export default function EducationCTA() {
                             className="h-full bg-yellow-400 shadow-[0_0_10px_#FFD700]"
                         />
                     </div>
-                    <p className="text-xs font-mono text-gray-500 text-right">SYSTEM KNOWLEDGE: 100% // READY FOR DEPLOYMENT</p>
+                    <p className="text-xs font-mono text-gray-500 text-right">COMPLETED CSD PROGRAM // READY FOR WORK</p>
                 </motion.div>
 
                 {/* CTA */}
@@ -71,7 +71,7 @@ export default function EducationCTA() {
                             >
                                 <div className="absolute inset-0 bg-yellow-900/20 rounded-sm animate-ping" />
                                 <div className="relative flex items-center gap-2">
-                                    <Lock size={12} /> [ CLICK TO DECRYPT CONTACT DATA ]
+                                    <Lock size={12} /> [ CLICK TO REVEAL CONTACT INFO ]
                                 </div>
                             </button>
                         ) : (
@@ -81,7 +81,7 @@ export default function EducationCTA() {
                                 className="flex flex-col items-end gap-1"
                             >
                                 <div className="flex items-center gap-2 text-gray-400 font-mono text-sm">
-                                    <span className="text-green-500 text-xs">[SECURE]</span> procooho@gmail.com
+                                    procooho@gmail.com
                                 </div>
                                 <p className="text-gray-400 font-mono text-sm">(780) 777-7321</p>
                             </motion.div>
@@ -93,7 +93,7 @@ export default function EducationCTA() {
                                 className="flex items-center gap-2 px-4 py-2 border border-blue-500/30 text-blue-400 hover:bg-blue-500/10 hover:border-blue-500 hover:text-white transition-all duration-300 font-mono text-sm rounded-sm group"
                             >
                                 <Linkedin size={14} />
-                                LINKEDIN_PROFILE
+                                LINKEDIN PROFILE
                                 <ArrowUpRight size={14} className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
                             </a>
                         </div>

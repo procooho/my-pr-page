@@ -49,10 +49,10 @@ export default function NotFound() {
                 >
                     <div className="flex items-center justify-center gap-2 text-yellow-400 font-mono text-sm tracking-widest">
                         <AlertTriangle size={16} />
-                        <span>SYSTEM_ERROR: RESOURCE_NOT_FOUND</span>
+                        <span>PAGE NOT FOUND</span>
                     </div>
                     <p className="text-xl text-white font-chakra font-bold">
-                        The requested sector could not be located.
+                        The page you are looking for does not exist.
                     </p>
                     <p className="text-gray-400 max-w-md mx-auto">
                         You may have followed a broken link or the page has been moved to a different directory.
@@ -80,7 +80,7 @@ export default function NotFound() {
                         className="group relative px-6 py-3 bg-yellow-400 text-black font-bold font-chakra tracking-wide rounded-sm overflow-hidden hover:bg-yellow-300 transition-colors flex items-center gap-2"
                     >
                         <Home size={18} />
-                        INITIATE_RETURN
+                        GO HOME
                     </Link>
 
                     <button
@@ -88,7 +88,7 @@ export default function NotFound() {
                         className="px-6 py-3 border border-white/20 text-white font-mono text-xs tracking-wider hover:bg-white/5 transition-colors flex items-center gap-2 rounded-sm"
                     >
                         <ArrowLeft size={16} />
-                        GO_BACK
+                        GO BACK
                     </button>
                 </motion.div>
             </motion.div>

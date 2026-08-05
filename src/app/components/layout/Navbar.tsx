@@ -164,7 +164,7 @@ export default function Navbar() {
                     </div>
 
                     <span className={`text-xs font-mono font-bold tracking-widest transition-colors ${isDropdownOpen ? 'text-yellow-400' : 'text-gray-200 group-hover:text-yellow-400'}`}>
-                        NET_LINK
+                        QUICK LINKS
                     </span>
 
                     <div className={`p-1 rounded-sm border transition-colors ${isDropdownOpen ? 'bg-yellow-400 border-yellow-400 text-black' : 'bg-white/10 border-white/20 text-yellow-400 group-hover:bg-yellow-400 group-hover:text-black group-hover:border-yellow-400'}`}>
@@ -192,7 +192,7 @@ export default function Navbar() {
                                 className="flex flex-col gap-1"
                             >
                                 <motion.div variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }} className="px-4 py-2 text-[10px] font-mono text-yellow-500/80 tracking-widest border-b border-white/5 mb-1">
-                                    [ PROJECTS ]
+                                    PROJECTS
                                 </motion.div>
                                 <motion.a variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }} href="https://so-poong.ca" target="_blank" className="flex items-center gap-3 px-4 py-3 text-xs text-gray-400 hover:text-white hover:bg-white/5 rounded-sm transition-colors group">
                                     <Link2 size={14} className="group-hover:text-white" /> Sopoong Website
@@ -207,7 +207,7 @@ export default function Navbar() {
                                 <motion.div variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }} className="h-[1px] bg-white/10 my-1 mx-2" />
 
                                 <motion.div variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }} className="px-4 py-2 text-[10px] font-mono text-yellow-500/80 tracking-widest border-b border-white/5 mb-1 mt-1">
-                                    [ PROFILE ]
+                                    CONNECT
                                 </motion.div>
                                 <motion.a variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }} href="https://www.linkedin.com/in/soomin-park-030500277/" target="_blank" className="flex items-center gap-3 px-4 py-3 text-xs text-gray-400 hover:text-white hover:bg-white/5 rounded-sm transition-colors group">
                                     <Linkedin size={14} className="group-hover:text-blue-400" /> LINKEDIN
@@ -247,7 +247,7 @@ export default function Navbar() {
 
                             <motion.div variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1 } } }} className="flex flex-col gap-4 text-sm font-mono">
                                 <motion.div variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }} className="text-yellow-500/80 font-mono text-xs tracking-widest border-b border-white/5 pb-2 mb-2">
-                                    [ PROJECTS ]
+                                    PROJECTS
                                 </motion.div>
                                 <motion.a variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }} href="https://so-poong.ca" target="_blank" className="flex items-center gap-4 hover:text-white transition-colors pl-2">
                                     <Link2 size={16} /> Sopoong Website
@@ -260,7 +260,7 @@ export default function Navbar() {
                                 </motion.a>
 
                                 <motion.div variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }} className="text-yellow-500/80 font-mono text-xs tracking-widest border-b border-white/5 pb-2 mb-2 mt-4">
-                                    [ PROFILE ]
+                                    CONNECT
                                 </motion.div>
                                 <motion.a variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }} href="https://www.linkedin.com/in/soomin-park-030500277/" target="_blank" className="flex items-center gap-4 hover:text-white transition-colors pl-2">
                                     <Linkedin size={16} /> LINKEDIN

@@ -7,7 +7,7 @@ import Link from 'next/link';
 const experiments = [
     {
         title: "DESIGN SYSTEM",
-        id: "EXP_01",
+        id: "01",
         description: "The atomic visual language powering this environment. Typography, colors, and core tokens.",
         url: "/2025/design-system-showcase-2025",
         icon: Palette,
@@ -19,7 +19,7 @@ const experiments = [
     },
     {
         title: "COMPONENT LAB",
-        id: "EXP_02",
+        id: "02",
         description: "Isolated behavioral tests for UI components. Interactive states, animations, and edge cases.",
         url: "/2025/component-showcase-2025",
         icon: Box,
@@ -46,14 +46,14 @@ export default function Experiments() {
                     <div>
                         <div className="flex items-center gap-2 text-yellow-400 mb-2">
                             <FlaskConical size={16} />
-                            <span className="font-mono text-xs tracking-widest">R&D // INTERNAL</span>
+                            <span className="font-mono text-xs tracking-widest">SANDBOX & RESOURCES</span>
                         </div>
                         <h2 className="text-3xl font-chakra font-bold text-white">
-                            EXPERIMENTAL <span className="text-gray-600">PROTOCOLS</span>
+                            INTERACTIVE <span className="text-gray-600">DEMOS</span>
                         </h2>
                     </div>
                     <p className="font-mono text-xs text-gray-500 md:max-w-sm text-left md:text-right">
-                        // NON-PRODUCTION ENVIRONMENTS<br />
+                        // Interactive labs and design systems<br />
                         Testing grounds for new interaction models and visual systems.
                     </p>
                 </div>
@@ -93,7 +93,7 @@ export default function Experiments() {
                                 </p>
 
                                 <div className={`flex items-center gap-2 text-xs font-mono font-bold ${exp.color} group-hover:gap-4 transition-all`}>
-                                    INITIALIZE <ArrowRight size={14} />
+                                    EXPLORE <ArrowRight size={14} />
                                 </div>
                             </motion.div>
                         </Link>

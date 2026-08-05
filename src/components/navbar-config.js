@@ -81,9 +81,9 @@ export const defaultNavbarConfig = {
       title: 'Main Menu',
       gradientColor: 'blue',
       items: [
-        { label: 'About Me!', href: '/', icon: CircleQuestionMark },
-        { label: 'Contact Me!', href: '/contact', icon: Mail },
-        { label: 'LINK - LinkedIn', href: 'https://www.linkedin.com/in/soomin-park-030500277/', icon: Link },
+        { label: 'About Me', href: '/', icon: CircleQuestionMark },
+        { label: 'Contact Me', href: '/contact', icon: Mail },
+        { label: 'LinkedIn', href: 'https://www.linkedin.com/in/soomin-park-030500277/', icon: Link },
         {
           label: 'Download Resume',
           icon: LayoutList,
@@ -117,7 +117,7 @@ export const defaultNavbarConfig = {
           label: 'World Of Warcraft',
           icon: Presentation,
           links: [
-            { label: 'LINK - Guild Item Level Tracker', href: 'https://wow-guild-raid-ilvl.vercel.app/' },
+            { label: 'Guild Item Level Tracker', href: 'https://wow-guild-raid-ilvl.vercel.app/' },
             { label: 'Description', href: '/guild-item-level-tracker' },
           ],
         },
@@ -125,7 +125,7 @@ export const defaultNavbarConfig = {
           label: 'Sopoong Website',
           icon: Presentation,
           links: [
-            { label: 'LINK - Sopoong', href: 'https://so-poong.ca/' },
+            { label: 'Sopoong Website', href: 'https://so-poong.ca/' },
             { label: 'Description', href: '/sopoong' },
           ],
         },
@@ -139,7 +139,7 @@ export const defaultNavbarConfig = {
           label: 'Capstone Project (NAIT)',
           icon: Presentation,
           links: [
-            { label: 'LINK - ProAthleteMetrics', href: 'https://www.proathletemetrics.com/' },
+            { label: 'ProAthleteMetrics', href: 'https://www.proathletemetrics.com/' },
             { label: 'Description', href: '/capstone' },
           ],
         },

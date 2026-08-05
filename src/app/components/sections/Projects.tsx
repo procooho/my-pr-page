@@ -79,11 +79,11 @@ export default function Projects() {
                 {/* Section Header */}
                 <div className="mb-32 flex flex-col md:flex-row justify-between md:items-end border-b border-white/10 pb-6 border-l-4 border-l-yellow-400 pl-6 md:pl-0 md:border-l-0">
                     <div className="mb-8 md:mb-0">
-                        <span className="font-mono text-xs text-yellow-400 mb-2 block">// PORTFOLIO INDEX</span>
-                        <h2 className="text-4xl md:text-5xl font-chakra font-bold text-white">HOLOGRAPHIC <br /><span className="text-gray-600">SCHEMATICS</span></h2>
+                        <span className="font-mono text-xs text-yellow-400 mb-2 block">// FEATURED PROJECTS</span>
+                        <h2 className="text-4xl md:text-5xl font-chakra font-bold text-white">FEATURED <br /><span className="text-gray-600">PROJECTS</span></h2>
                     </div>
                     <p className="max-w-md text-sm text-gray-400 font-mono md:text-right">
-                        [ 03 SYSTEM ARCHITECTURES LOADED ]<br />
+                        [ 3 Projects Featured ]<br />
                         Detailed breakdown of technical contributions.
                     </p>
                 </div>
@@ -151,7 +151,7 @@ export default function Projects() {
                             >
                                 <div className="space-y-2">
                                     <div className="flex flex-col items-start gap-1 text-yellow-400 font-mono text-xs">
-                                        <span>PROJECT_{project.id}</span>
+                                        <span>PROJECT {project.id}</span>
                                         <span className="w-8 h-[1px] bg-yellow-400/50 my-1" />
                                         <span>{project.role}</span>
                                         <span className="w-8 h-[1px] bg-yellow-400/50 my-1" />
@@ -203,7 +203,7 @@ export default function Projects() {
                                         target="_blank"
                                         className="group flex items-center gap-2 px-6 py-3 bg-white text-black font-bold font-mono text-sm hover:bg-yellow-400 transition-colors"
                                     >
-                                        LIVE SYSTEM <ExternalLink size={14} />
+                                        LIVE SITE <ExternalLink size={14} />
                                     </a>
                                 </div>
 

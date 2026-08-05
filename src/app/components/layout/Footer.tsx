@@ -59,7 +59,7 @@ export default function Footer() {
                                 </AnimatePresence>
                             </div>
                             <p className="font-mono text-xs text-gray-500 max-w-xs leading-relaxed ml-2">
-                                FULL STACK DEVELOPER & ARCHITECT // <br />
+                                FULL STACK DEVELOPER & SYSTEM ARCHITECT // <br />
                                 SHERWOOD PARK, AB
                             </p>
                         </div>
@@ -68,18 +68,18 @@ export default function Footer() {
 
                     {/* Directory */}
                     <div className="space-y-4">
-                        <h5 className="font-mono text-xs text-yellow-400 tracking-widest mb-4">[ DIRECTORY ]</h5>
+                        <h5 className="font-mono text-xs text-yellow-400 tracking-widest mb-4">DIRECTORY</h5>
                         <ul className="space-y-2 font-chakra text-sm text-gray-400">
-                            <li><button onClick={() => document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' })} className="hover:text-white transition-colors hover:translate-x-1 duration-300 inline-block"> // HOME</button></li>
-                            <li><button onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })} className="hover:text-white transition-colors hover:translate-x-1 duration-300 inline-block"> // OPERATIONAL DIRECTIVES</button></li>
-                            <li><button onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })} className="hover:text-white transition-colors hover:translate-x-1 duration-300 inline-block"> // SCHEMATICS</button></li>
-                            <li><button onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} className="hover:text-white transition-colors hover:translate-x-1 duration-300 inline-block"> // EXECUTE</button></li>
+                            <li><button onClick={() => document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' })} className="hover:text-white transition-colors hover:translate-x-1 duration-300 inline-block">HOME</button></li>
+                            <li><button onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })} className="hover:text-white transition-colors hover:translate-x-1 duration-300 inline-block">ABOUT</button></li>
+                            <li><button onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })} className="hover:text-white transition-colors hover:translate-x-1 duration-300 inline-block">PROJECTS</button></li>
+                            <li><button onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} className="hover:text-white transition-colors hover:translate-x-1 duration-300 inline-block">CONTACT</button></li>
                         </ul>
                     </div>
 
                     {/* Socials / Contact */}
                     <div className="space-y-4">
-                        <h5 className="font-mono text-xs text-yellow-400 tracking-widest mb-4">[ EXTERNAL UPLINKS ]</h5>
+                        <h5 className="font-mono text-xs text-yellow-400 tracking-widest mb-4">CONNECT</h5>
                         <div className="flex flex-col gap-2">
                             <a href="https://www.linkedin.com/in/soomin-park-030500277/" target="_blank" className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors group p-2 border border-white/5 hover:border-white/20 hover:bg-white/5 rounded-sm">
                                 <Linkedin size={16} /> <span className="font-mono text-xs">LINKEDIN</span>
@@ -90,7 +90,7 @@ export default function Footer() {
                             >
                                 <div className="flex items-center gap-3">
                                     <Mail size={16} />
-                                    <span className="font-mono text-xs">EMAIL_TRANSMISSION</span>
+                                    <span className="font-mono text-xs">EMAIL</span>
                                 </div>
                                 {emailCopied ? (
                                     <span className="flex items-center gap-1 text-[10px] text-green-400 font-mono animate-in fade-in slide-in-from-right-2">
@@ -129,14 +129,14 @@ export default function Footer() {
                             onClick={scrollToTop}
                             className="group flex items-center gap-2 text-xs font-mono text-yellow-400 hover:text-white transition-colors"
                         >
-                            RETURN_TO_TOP <div className="p-2 border border-yellow-400/30 rounded-sm group-hover:bg-yellow-400 group-hover:text-black transition-all"><ArrowUp size={14} /></div>
+                            BACK TO TOP <div className="p-2 border border-yellow-400/30 rounded-sm group-hover:bg-yellow-400 group-hover:text-black transition-all"><ArrowUp size={14} /></div>
                         </button>
                     </div>
 
                     {/* Fine Print */}
                     <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-gray-700 font-mono border-t border-white/5 pt-6">
-                        <p>© 2025 SOOMIN PARK. ALL SYSTEMS VERIFIED.</p>
-                        <p>OPTIMIZED FOR CHROME 110+ // RUNNING ON VERCEL EDGE NETWORK</p>
+                        <p>© 2025 SOOMIN PARK. ALL RIGHTS RESERVED.</p>
+                        <p>OPTIMIZED FOR MODERN BROWSERS // HOSTED ON VERCEL</p>
                     </div>
                 </div>
             </div>

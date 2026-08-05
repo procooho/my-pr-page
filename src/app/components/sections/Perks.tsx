@@ -78,7 +78,7 @@ export default function Perks() {
                     className="text-center space-y-4"
                 >
                     <h2 className="text-4xl md:text-5xl font-chakra font-bold text-white">
-                        OPERATIONAL <span className="text-yellow-400">DIRECTIVES</span>
+                        CORE <span className="text-yellow-400">PRINCIPLES</span>
                     </h2>
                     <p className="max-w-2xl mx-auto text-gray-400 font-inter text-sm">
                         "I don't just mean planning, I mean <span className="text-white">understanding what truly matters</span> before deciding how to build it."
@@ -100,7 +100,7 @@ export default function Perks() {
                             className="bg-zinc-900/80 border border-yellow-400/20 p-8 hover:bg-zinc-800 hover:border-yellow-400 transition-all duration-300 group relative overflow-hidden"
                         >
                             <div className="absolute top-0 right-0 p-4 opacity-100 transition-opacity">
-                                <span className="font-mono text-xs text-yellow-400">SYS_{perk.id}</span>
+                                <span className="font-mono text-xs text-yellow-400">{perk.id}</span>
                             </div>
 
                             <perk.icon className="w-10 h-10 text-white mb-6 group-hover:text-yellow-400 transition-colors" />
@@ -131,10 +131,10 @@ export default function Perks() {
                     <motion.div variants={{ hidden: { x: -30, opacity: 0 }, visible: { x: 0, opacity: 1 } }} className="space-y-6">
                         <div className="flex items-center gap-2 text-yellow-400 font-mono text-xs tracking-widest mb-2">
                             <div className="w-2 h-2 bg-yellow-400 animate-pulse" />
-                            SYSTEM_MIGRATION_LOG
+                            CAREER TRANSITION
                         </div>
                         <h3 className="text-3xl font-chakra font-bold text-white">
-                            REFACTORING <br /><span className="text-yellow-400">CAREER PATHWAYS</span>
+                            BUILDING MY <br /><span className="text-yellow-400">CAREER PATH</span>
                         </h3>
                         <div className="mt-8 space-y-8 font-inter leading-relaxed text-gray-300">
 
@@ -144,11 +144,11 @@ export default function Perks() {
                                     <span className="w-1.5 h-1.5 bg-yellow-400 rounded-full animate-pulse" />
                                 </span>
                                 <div className="mb-2 font-mono text-xs text-yellow-400 tracking-wider">
-                                    SYS_ALERT: PASSION_PROTOCOL_INITIATED
+                                    CAREER PIVOT: PURSUING CODING
                                 </div>
                                 <div className="bg-yellow-400/5 p-4 rounded-sm border border-yellow-400/10">
                                     <p className="text-sm">
-                                        <span className="text-yellow-400 font-bold">CRITICAL UPDATE:</span> After years in the trucking and logistics sector, I executed a strategic pivot to follow my true passion. I realized I needed to <span className="text-white border-b border-yellow-400/50 pb-0.5">build systems, not just operate them.</span>
+                                        <span className="text-yellow-400 font-bold">CAREER UPDATE:</span> After years in the trucking and logistics sector, I executed a strategic pivot to follow my true passion. I realized I needed to <span className="text-white border-b border-yellow-400/50 pb-0.5">build systems, not just operate them.</span>
                                     </p>
                                 </div>
                             </div>
@@ -157,7 +157,7 @@ export default function Perks() {
                             <div className="relative pl-6 border-l-2 border-white/10 hover:border-white/30 transition-colors group">
                                 <span className="absolute -left-[5px] top-0 w-2 h-2 rounded-full bg-zinc-800 border border-white/20 group-hover:border-white/60 transition-colors" />
                                 <div className="mb-2 font-mono text-xs text-gray-500 group-hover:text-yellow-400/80 transition-colors tracking-wider">
-                                    LOG: EXPERIENCE_AS_FEATURE
+                                    DIVERSE EXPERIENCE
                                 </div>
                                 <p>
                                     My background is diverse by design. I leverage years of high-stakes experience across data-heavy sectors—from fleet logistics to team management—to bring a unique perspective to software engineering. <span className="text-white">I build with an operator's mindset: reliability first.</span>
@@ -168,7 +168,7 @@ export default function Perks() {
                             <div className="relative pl-6 border-l-2 border-white/10 hover:border-white/30 transition-colors group">
                                 <span className="absolute -left-[5px] top-0 w-2 h-2 rounded-full bg-zinc-800 border border-white/20 group-hover:border-white/60 transition-colors" />
                                 <div className="mb-2 font-mono text-xs text-gray-500 group-hover:text-yellow-400/80 transition-colors tracking-wider">
-                                    LOG: VALIDATION_SUCCESS
+                                    ACADEMIC SUCCESS
                                 </div>
                                 <p>
                                     This transition began with <span className="text-white">Open Studies at NAIT</span>, where I quickly achieved top-tier grades, validating my entry into the <span className="text-white">Computer Software Development</span> program.
@@ -179,7 +179,7 @@ export default function Perks() {
                             <div className="relative pl-6 border-l-2 border-white/10 hover:border-white/30 transition-colors group">
                                 <span className="absolute -left-[5px] top-0 w-2 h-2 rounded-full bg-zinc-800 border border-white/20 group-hover:border-white/60 transition-colors" />
                                 <div className="mb-2 font-mono text-xs text-gray-500 group-hover:text-yellow-400/80 transition-colors tracking-wider">
-                                    LOG: IDENTITY_RESOLVED
+                                    CORE PHILOSOPHY
                                 </div>
                                 <p>
                                     If I were to describe myself in one word, it would be <span className="text-white font-bold">Strategist</span>. I start every task by analyzing and planning carefully, ensuring that when execution begins, it is rapid, precise, and error-free.
@@ -249,13 +249,13 @@ export default function Perks() {
                             </div>
                             <div className="space-y-1">
                                 <div className="flex items-center gap-3">
-                                    <h4 className="text-xl font-bold font-chakra text-white tracking-wide">ACCESS CREDENTIALS</h4>
+                                    <h4 className="text-xl font-bold font-chakra text-white tracking-wide">MY DOCUMENTS</h4>
                                     <span className="px-2 py-0.5 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-[10px] font-mono tracking-wider animate-pulse">
                                         VERIFIED
                                     </span>
                                 </div>
                                 <p className="text-sm text-gray-400 font-mono">
-                                    // Full dossier available for extraction.
+                                    // Download my documents below.
                                 </p>
                             </div>
                         </div>
@@ -271,7 +271,7 @@ export default function Perks() {
                                 </div>
                                 <div className="flex flex-col">
                                     <span className="text-xs font-mono text-gray-300 group-hover:text-white">RESUME.DOCX</span>
-                                    <span className="text-[10px] text-gray-600 group-hover:text-yellow-400/70">LATEST BUILD</span>
+                                    <span className="text-[10px] text-gray-600 group-hover:text-yellow-400/70">Latest Version</span>
                                 </div>
                                 <div className="w-full"></div>
                                 <div className="ml-2 pl-4 border-l border-white/5 text-gray-500 group-hover:text-yellow-400">
@@ -288,7 +288,7 @@ export default function Perks() {
                                 </div>
                                 <div className="flex flex-col">
                                     <span className="text-xs font-mono text-gray-300 group-hover:text-white">COVER_LETTER.DOCX</span>
-                                    <span className="text-[10px] text-gray-600 group-hover:text-yellow-400/70">DOCUMENTATION</span>
+                                    <span className="text-[10px] text-gray-600 group-hover:text-yellow-400/70">Cover Letter</span>
                                 </div>
                                 <div className="w-full"></div>
                                 <div className="ml-2 pl-4 border-l border-white/5 text-gray-500 group-hover:text-yellow-400">
